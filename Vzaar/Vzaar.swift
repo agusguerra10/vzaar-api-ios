@@ -1042,7 +1042,7 @@ public class Vzaar: NSObject, AWSUploadProgressDelegate{
             if let httpResponse = response as? HTTPURLResponse {
                 if httpResponse.statusCode < 200 || httpResponse.statusCode > 299 {
                     if let dataDict = VzaarParser.getDictionary(data: data){
-                        let vzaarError = VzaarError(withDataDictionary: dataDict, statusCode: httpResponse.statusCode)
+                        let vzaarError = VzaarError(withDataDictionary: dataDict, statusCode: httpResponse.statusCode as NSNumber/*objective-C*/)
                         failure(vzaarError)
                     }
                 }else{

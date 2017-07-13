@@ -11,19 +11,19 @@ import Foundation
 public class VzaarUpdateCategoryParameters: VzaarRequestParameters{
     
     //Category id - REQUIRED
-    public var id: Int32?
+    public var id: NSNumber?/*objective-C*/
     //Rename the category
     public var name: String?
     //Move the category underneath an existing parent node
-    public var parent_id: Int32?
+    public var parent_id: NSNumber?/*objective-C*/
     //Move the category to the top level. Can not be used in combination with parent_id
-    public var move_to_root: Bool?
+    public var move_to_root: NSNumber?/*objective-C*/
     
     override init() {
         super.init()
     }
     
-    public convenience init(id: Int32) {
+    public convenience init(id: NSNumber/*objective-C*/) {
         self.init()
         
         self.id = id

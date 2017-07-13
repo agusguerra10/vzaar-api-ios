@@ -33,11 +33,11 @@ public class VzaarMultiPartVideoSignatureParameters: VzaarRequestParameters {
     //REQUIRED  base name of your video file
     public var filename: String?
     //REQUIRED  size in bytes of your video file
-    public var filesize: Int64?
+    public var filesize: NSNumber?/*objective-C*/
     //OPTIONAL  desired part size specified as a string
     public var desired_part_size: String?
     
-    public convenience init(uploader: String, filename: String, filesize: Int64){
+    public convenience init(uploader: String, filename: String, filesize: NSNumber/*objective-C*/){
         self.init()
         
         self.uploader = uploader
@@ -46,7 +46,7 @@ public class VzaarMultiPartVideoSignatureParameters: VzaarRequestParameters {
 
     }
     
-    public convenience init(uploader: String, filename: String, filesize: Int64, desired_part_size: String){
+    public convenience init(uploader: String, filename: String, filesize: NSNumber/*objective-C*/, desired_part_size: String){
         self.init()
         
         self.uploader = uploader

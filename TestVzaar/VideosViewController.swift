@@ -59,7 +59,7 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
         
         let vzaarGetVideosParameters = VzaarGetVideosParameters()
         vzaarGetVideosParameters.state = state
-        vzaarGetVideosParameters.page = 1
+        vzaarGetVideosParameters.
         vzaarGetVideosParameters.per_page = 50
         
         Vzaar.sharedInstance().getVideos(vzaarGetVideosParameters: vzaarGetVideosParameters, success: { (vzaarVideos) in

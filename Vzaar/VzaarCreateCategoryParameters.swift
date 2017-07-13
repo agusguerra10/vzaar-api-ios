@@ -13,7 +13,7 @@ public class VzaarCreateCategoryParameters: VzaarRequestParameters {
     //Name for the category - REQUIRED
     public var name: String?
     //Create as a subcategory
-    public var parent_id: Int32?
+    public var parent_id: NSNumber?/*objective-C*/
 
     override init() {
         super.init()

@@ -19,7 +19,7 @@ public class VzaarCreateVideoParameters: VzaarRequestParameters{
      */
     
     public var guid: String?
-    public var ingest_recipe_id: Int32?
+    public var ingest_recipe_id: NSNumber?/*objective-C*/
     public var title: String?
     public var paramDescription: String?
     
@@ -44,7 +44,7 @@ public class VzaarCreateVideoParameters: VzaarRequestParameters{
      *  @param title                   OPTIONAL  Video title. If not provided this will default to your source filename
      *  @param paramDescription             OPTIONAL  Video description
      */
-    public convenience init(guid: String, ingest_recipe_id: Int32, title: String, paramDescription: String){
+    public convenience init(guid: String, ingest_recipe_id: NSNumber/*objective-C*/, title: String, paramDescription: String){
         self.init()
         
         self.guid = guid

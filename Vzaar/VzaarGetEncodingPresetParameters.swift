@@ -10,13 +10,13 @@ import Foundation
 
 public class VzaarGetEncodingPresetParameters: VzaarRequestParameters {
     
-    public var id: Int32?
+    public var id: NSNumber?/*objective-C*/
     
     override init(){
         super.init()
     }
     
-    public convenience init(id: Int32){
+    public convenience init(id: NSNumber/*objective-C*/){
         self.init()
         
         self.id = id

@@ -15,9 +15,9 @@ public class VzaarGetIngestRecipesParameters: VzaarRequestParameters {
     //Specify sort order. Acceptable values are: asc, desc
     public var order: String?
     //Page number for paginated results.
-    public var page: Int32?
+    public var page: NSNumber?/*objective-C*/
     //Number of results per paginated page result.
-    public var per_page: Int32?
+    public var per_page: NSNumber?/*objective-C*/
 
     
     public override init(){

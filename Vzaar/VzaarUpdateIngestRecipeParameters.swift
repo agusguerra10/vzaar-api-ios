@@ -11,35 +11,35 @@ import Foundation
 public class VzaarUpdateIngestRecipeParameters: VzaarRequestParameters {
     
     //Ingest Recipe id - REQUIRED
-    public var id: Int32?
+    public var id: NSNumber?/*objective-C*/
     //Name for the recipe
     public var name: String?
     //List of encoding preset id values to associate with this recipe
-    public var encoding_preset_ids: [Int32]?
+    public var encoding_preset_ids: [NSNumber/*objective-C*/]?
     //Recipe description.
     public var ingestRecipeDescription: String?
     //Flag this recipe as my default recipe. You can only have one default recipe.
-    public var defaut: Bool?
+    public var defaut: NSNumber?/*objective-C*/
     //Perform multipass encoding (this will slow down your video processing but yield better quality results).
-    public var multipass: Bool?
+    public var multipass: NSNumber?/*objective-C*/
     //Generate an animated gif thumbnail.
-    public var generate_animated_thumb: Bool?
+    public var generate_animated_thumb: NSNumber?/*objective-C*/
     //Generate sprites (used for scrubbing thumbnails in the vzaar player).
-    public var generate_sprite: Bool?
+    public var generate_sprite: NSNumber?/*objective-C*/
     //Burn your watermark into the transcoded video (requires additional watermark setup).
-    public var use_watermark: Bool?
+    public var use_watermark: NSNumber?/*objective-C*/
     //Send your video to your associated YouTube account (requires YouTube syndication access and additional setup).
-    public var send_to_youtube: Bool?
+    public var send_to_youtube: NSNumber?/*objective-C*/
     //Send email notification after video processing
-    public var notify_by_email: Bool?
+    public var notify_by_email: NSNumber?/*objective-C*/
     //Send http pingback after video processing.
-    public var notify_by_pingback: Bool?
+    public var notify_by_pingback: NSNumber?/*objective-C*/
     
     override init() {
         super.init()
     }
     
-    public convenience init(id: Int32){
+    public convenience init(id: NSNumber/*objective-C*/){
         self.init()
         
         self.id = id

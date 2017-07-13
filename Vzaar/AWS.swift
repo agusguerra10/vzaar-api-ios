@@ -77,7 +77,7 @@ class AWS: NSObject, URLSessionDelegate, URLSessionDataDelegate{
                   success: @escaping () -> Void,
                   failure: @escaping (_ error:Error?) -> Void){
         
-        self.totalBytes = multiPartVideoSignatureParameters.filesize!
+        self.totalBytes = multiPartVideoSignatureParameters.filesize! as! Int64
         
         postParts(fileURLPath: fileURLPath, signature: signature, multiPartVideoSignatureParameters: multiPartVideoSignatureParameters, success: { 
             
@@ -135,7 +135,7 @@ class AWS: NSObject, URLSessionDelegate, URLSessionDataDelegate{
                 var data = try Data(contentsOf: fileURLPath)
                 
                 if let part = part, let parts = signature.parts, let part_size_in_bytes = signature.part_size_in_bytes {
-                    data = partData(data: data, part: part, parts: parts, part_size_in_bytes: part_size_in_bytes)
+                    data = partData(data: data, part: part, parts: Int(parts), part_size_in_bytes: Int(part_size_in_bytes))
                 }
                 
                 let bodyData = self.createBody(parameters: videoDictionary, boundary: boundary, data: data, mimeType: "video/\(type)", filename: "video.\(type)")
@@ -172,7 +172,7 @@ class AWS: NSObject, URLSessionDelegate, URLSessionDataDelegate{
         
         if let filename = multiPartVideoSignatureParameters.filename, let parts = signature.parts{
             
-            postPartRecursion(fileURLPath: fileURLPath, signature: signature, filename: filename, part: 0, parts: parts, success: {
+            postPartRecursion(fileURLPath: fileURLPath, signature: signature, filename: filename, part: 0, parts: Int(parts), success: {
                 success()
                 
             }, failure: { (error) in

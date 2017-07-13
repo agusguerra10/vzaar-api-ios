@@ -15,13 +15,13 @@ public class VzaarGetCategoriesParameters: VzaarRequestParameters {
     //Specify sort order. Acceptable values are: asc, desc
     public var order: String?
     //Page number for paginated results.
-    public var page: Int32?
+    public var page: NSNumber?/*objective-C*/
     //Number of results per paginated page result.
-    public var per_page: Int32?
+    public var per_page: NSNumber?/*objective-C*/
     //Number of hierarchy levels to include. This is one-based so a value of 2 would return your root categories and only their immediate child categories
-    public var levels: Int32?
+    public var levels: NSNumber?/*objective-C*/
     //List of category id values to allow granular control of result list.
-    public var ids: [Int32]?
+    public var ids: [NSNumber/*objective-C*/]?
     
     public override init(){
         super.init()

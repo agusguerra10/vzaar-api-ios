@@ -10,25 +10,25 @@ import Foundation
 
 public class VzaarEncodingPreset: NSObject{
     
-    public var id: Int?
+    public var id: NSNumber?/*objective-C*/
     public var name: String?
     public var encodingPresetDescription: String?
     public var output_format: String?
-    public var bitrate_kbps: Int?
-    public var max_bitrate_kbps: Int?
-    public var long_dimension: Int?
+    public var bitrate_kbps: NSNumber?/*objective-C*/
+    public var max_bitrate_kbps: NSNumber?/*objective-C*/
+    public var long_dimension: NSNumber?/*objective-C*/
     public var video_codec: String?
     public var profile: String?
     public var frame_rate_upper_threshold: String?
-    public var audio_bitrate_kbps: Int?
-    public var audio_channels: Int?
-    public var audio_sample_rate: Int?
+    public var audio_bitrate_kbps: NSNumber?/*objective-C*/
+    public var audio_channels: NSNumber?/*objective-C*/
+    public var audio_sample_rate: NSNumber?/*objective-C*/
     public var created_at: String?
     public var updated_at: String?
     
     public init(withDict dict: NSDictionary){
         
-        if let id = dict["id"] as? Int{
+        if let id = dict["id"] as? NSNumber/*objective-C*/{
             self.id = id
         }
         if let name = dict["name"] as? String{
@@ -40,13 +40,13 @@ public class VzaarEncodingPreset: NSObject{
         if let output_format = dict["output_format"] as? String{
             self.output_format = output_format
         }
-        if let bitrate_kbps = dict["bitrate_kbps"] as? Int{
+        if let bitrate_kbps = dict["bitrate_kbps"] as? NSNumber/*objective-C*/{
             self.bitrate_kbps = bitrate_kbps
         }
-        if let max_bitrate_kbps = dict["max_bitrate_kbps"] as? Int{
+        if let max_bitrate_kbps = dict["max_bitrate_kbps"] as? NSNumber/*objective-C*/{
             self.max_bitrate_kbps = max_bitrate_kbps
         }
-        if let long_dimension = dict["long_dimension"] as? Int{
+        if let long_dimension = dict["long_dimension"] as? NSNumber/*objective-C*/{
             self.long_dimension = long_dimension
         }
         if let video_codec = dict["video_codec"] as? String{
@@ -58,13 +58,13 @@ public class VzaarEncodingPreset: NSObject{
         if let frame_rate_upper_threshold = dict["frame_rate_upper_threshold"] as? String{
             self.frame_rate_upper_threshold = frame_rate_upper_threshold
         }
-        if let audio_bitrate_kbps = dict["audio_bitrate_kbps"] as? Int{
+        if let audio_bitrate_kbps = dict["audio_bitrate_kbps"] as? NSNumber/*objective-C*/{
             self.audio_bitrate_kbps = audio_bitrate_kbps
         }
-        if let audio_channels = dict["audio_channels"] as? Int{
+        if let audio_channels = dict["audio_channels"] as? NSNumber/*objective-C*/{
             self.audio_channels = audio_channels
         }
-        if let audio_sample_rate = dict["audio_sample_rate"] as? Int{
+        if let audio_sample_rate = dict["audio_sample_rate"] as? NSNumber/*objective-C*/{
             self.audio_sample_rate = audio_sample_rate
         }
         if let created_at = dict["created_at"] as? String{

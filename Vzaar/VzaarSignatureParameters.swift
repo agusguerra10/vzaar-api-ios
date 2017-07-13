@@ -12,7 +12,7 @@ public class VzaarSignatureParameters: VzaarRequestParameters{
 
     public var uploader: String?
     public var filename: String?
-    public var filesize: Int64?
+    public var filesize: NSNumber?/*objective-C*/
     
     override init(){
         super.init()

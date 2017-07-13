@@ -20,9 +20,9 @@ public class VzaarSignature: NSObject{
     public var guid: String?
     public var bucket: String?
     public var upload_hostname: String?
-    public var part_size: Int?
-    public var part_size_in_bytes: Int?
-    public var parts: Int?
+    public var part_size: NSNumber?/*objective-C*/
+    public var part_size_in_bytes: NSNumber?/*objective-C*/
+    public var parts: NSNumber?/*objective-C*/
     
     
     init(withDictionary dict: NSDictionary){
@@ -57,13 +57,13 @@ public class VzaarSignature: NSObject{
         if let upload_hostname = dict["upload_hostname"] as? String{
             self.upload_hostname = upload_hostname
         }
-        if let part_size = dict["part_size"] as? Int{
+        if let part_size = dict["part_size"] as? NSNumber?/*objective-C*/{
             self.part_size = part_size
         }
-        if let part_size_in_bytes = dict["part_size_in_bytes"] as? Int{
+        if let part_size_in_bytes = dict["part_size_in_bytes"] as? NSNumber?/*objective-C*/{
             self.part_size_in_bytes = part_size_in_bytes
         }
-        if let parts = dict["parts"] as? Int{
+        if let parts = dict["parts"] as? NSNumber?/*objective-C*/{
             self.parts = parts
         }
         

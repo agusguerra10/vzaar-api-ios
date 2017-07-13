@@ -10,24 +10,24 @@ import Foundation
 
 public class VzaarPlaylist: NSObject{
     
-    public var id: Int?
+    public var id: NSNumber?/*objective-C*/
     public var title: String?
     public var sort_order: String?
     public var sort_by: String?
-    public var max_vids: Int?
+    public var max_vids: NSNumber?/*objective-C*/
     public var position: String?
-    public var privacy: Bool?
+    public var privacy: NSNumber?/*objective-C*/
     public var dimensions: String?
-    public var autoplay: Bool?
-    public var continuous_play: Bool?
-    public var category_id: Int?
+    public var autoplay: NSNumber?/*objective-C*/
+    public var continuous_play: NSNumber?/*objective-C*/
+    public var category_id: NSNumber?/*objective-C*/
     public var embed_code: String?
     public var created_at: String?
     public var updated_at: String?
     
     
     public init(withDict dict: NSDictionary){
-        if let id = dict["id"] as? Int{
+        if let id = dict["id"] as? NSNumber/*objective-C*/{
             self.id = id
         }
         if let title = dict["title"] as? String{
@@ -39,25 +39,25 @@ public class VzaarPlaylist: NSObject{
         if let sort_by = dict["sort_by"] as? String{
             self.sort_by = sort_by
         }
-        if let max_vids = dict["max_vids"] as? Int{
+        if let max_vids = dict["max_vids"] as? NSNumber/*objective-C*/{
             self.max_vids = max_vids
         }
         if let position = dict["position"] as? String{
             self.position = position
         }
-        if let privacy = dict["private"] as? Bool{
+        if let privacy = dict["private"] as? NSNumber/*objective-C*/{
             self.privacy = privacy
         }
         if let dimensions = dict["dimensions"] as? String{
             self.dimensions = dimensions
         }
-        if let autoplay = dict["autoplay"] as? Bool{
+        if let autoplay = dict["autoplay"] as? NSNumber/*objective-C*/{
             self.autoplay = autoplay
         }
-        if let continuous_play = dict["continuous_play"] as? Bool{
+        if let continuous_play = dict["continuous_play"] as? NSNumber/*objective-C*/{
             self.continuous_play = continuous_play
         }
-        if let category_id = dict["category_id"] as? Int {
+        if let category_id = dict["category_id"] as? NSNumber/*objective-C*/ {
             self.category_id = category_id
         }
         if let embed_code = dict["embed_code"] as? String{

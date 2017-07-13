@@ -10,13 +10,13 @@ import Foundation
 
 public class Meta: NSObject{
     
-    public var total_count: Int?
+    public var total_count: NSNumber?/*objective-C*/
     public var links: Links?
 
 
     public init(withDictionary dict: NSDictionary){
         
-        if let total_count = dict["total_count"] as? Int{
+        if let total_count = dict["total_count"] as? NSNumber/*objective-C*/{
             self.total_count = total_count
         }
         if let links = dict["links"] as? NSDictionary{

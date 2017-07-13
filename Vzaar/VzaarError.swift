@@ -11,9 +11,9 @@ import Foundation
 public class VzaarError: NSObject{
 
     public var errors: NSArray?
-    public var statusCode: Int?
+    public var statusCode: NSNumber?/*objective-C*/
     
-    init(withDataDictionary dataDict: NSDictionary, statusCode: Int){
+    init(withDataDictionary dataDict: NSDictionary, statusCode: NSNumber?/*objective-C*/){
         
         self.statusCode = statusCode
         

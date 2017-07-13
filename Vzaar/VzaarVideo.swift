@@ -10,12 +10,12 @@ import Foundation
 
 public class VzaarVideo: NSObject{
 
-    public var id: Int?
+    public var id: NSNumber?/*objective-C*/
     public var title: String?
-    public var user_id: Int?
-    public var account_id: Int?
+    public var user_id: NSNumber?/*objective-C*/
+    public var account_id: NSNumber?/*objective-C*/
     public var videoDescription: String?
-    public var duration: Int?
+    public var duration: NSNumber?/*objective-C*/
     public var created_at: String?
     public var updated_at: String?
     public var privateVideo: Bool?
@@ -31,22 +31,22 @@ public class VzaarVideo: NSObject{
     
     public init(withDict dict: NSDictionary){
     
-        if let id = dict["id"] as? Int{
+        if let id = dict["id"] as? NSNumber/*objective-C*/{
             self.id = id
         }
         if let title = dict["title"] as? String{
             self.title = title
         }
-        if let user_id = dict["user_id"] as? Int{
+        if let user_id = dict["user_id"] as? NSNumber/*objective-C*/{
             self.user_id = user_id
         }
-        if let account_id = dict["account_id"] as? Int{
+        if let account_id = dict["account_id"] as? NSNumber/*objective-C*/{
             self.account_id = account_id
         }
         if let videoDescription = dict["description"] as? String{
             self.videoDescription = videoDescription
         }
-        if let duration = dict["duration"] as? Int{
+        if let duration = dict["duration"] as? NSNumber/*objective-C*/{
             self.duration = duration
         }
         if let created_at = dict["created_at"] as? String{
