@@ -1,0 +1,670 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		28254F8E1ED6C92600683656 /* VzaarParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254F8D1ED6C92600683656 /* VzaarParser.swift */; };
+		28254F961ED6D99300683656 /* VzaarGetVideoParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254F951ED6D99300683656 /* VzaarGetVideoParameters.swift */; };
+		28254F981ED6E05700683656 /* VzaarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254F971ED6E05700683656 /* VzaarConfig.swift */; };
+		28254F9A1ED71AC400683656 /* VzaarDeleteVideoParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254F991ED71AC400683656 /* VzaarDeleteVideoParameters.swift */; };
+		28254F9C1ED723E200683656 /* VzaarUpdateVideoParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254F9B1ED723E200683656 /* VzaarUpdateVideoParameters.swift */; };
+		28254FA11ED72F1B00683656 /* VzaarGetCategoriesParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FA01ED72F1B00683656 /* VzaarGetCategoriesParameters.swift */; };
+		28254FA81ED734EB00683656 /* VzaarCreateCategoryParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FA71ED734EB00683656 /* VzaarCreateCategoryParameters.swift */; };
+		28254FAB1ED8293C00683656 /* VzaarUpdateCategoryParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FAA1ED8293C00683656 /* VzaarUpdateCategoryParameters.swift */; };
+		28254FAD1ED82B4F00683656 /* VzaarDeleteCategoryParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FAC1ED82B4F00683656 /* VzaarDeleteCategoryParameters.swift */; };
+		28254FAF1ED8394500683656 /* VzaarGetCategoryParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FAE1ED8394500683656 /* VzaarGetCategoryParameters.swift */; };
+		28254FB11ED83A6100683656 /* VzaarGetCategoriesSubtreeParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FB01ED83A6100683656 /* VzaarGetCategoriesSubtreeParameters.swift */; };
+		28254FB31ED84C0A00683656 /* VzaarGetIngestRecipesParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FB21ED84C0A00683656 /* VzaarGetIngestRecipesParameters.swift */; };
+		28254FB51ED84C6700683656 /* VzaarGetIngestRecipeParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FB41ED84C6700683656 /* VzaarGetIngestRecipeParameters.swift */; };
+		28254FBE1ED855B800683656 /* VzaarCreateIngestRecipeParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FBD1ED855B800683656 /* VzaarCreateIngestRecipeParameters.swift */; };
+		28254FC01ED861E100683656 /* VzaarGetEncodingPresetsParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FBF1ED861E100683656 /* VzaarGetEncodingPresetsParameters.swift */; };
+		28254FC81ED867B300683656 /* VzaarGetEncodingPresetParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FC71ED867B300683656 /* VzaarGetEncodingPresetParameters.swift */; };
+		28254FCD1ED8713000683656 /* VzaarDeleteIngestRecipeParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FCC1ED8713000683656 /* VzaarDeleteIngestRecipeParameters.swift */; };
+		28254FCF1ED87AAC00683656 /* VzaarUpdateIngestRecipeParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FCE1ED87AAC00683656 /* VzaarUpdateIngestRecipeParameters.swift */; };
+		28254FD71ED8812100683656 /* VzaarPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FD61ED8812100683656 /* VzaarPlaylist.swift */; };
+		28254FD91ED8837400683656 /* VzaarGetPlaylistsParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FD81ED8837400683656 /* VzaarGetPlaylistsParameters.swift */; };
+		28254FDB1ED8856C00683656 /* VzaarCreatePlaylistParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FDA1ED8856C00683656 /* VzaarCreatePlaylistParameters.swift */; };
+		282C79581E65D07600E5B3E1 /* VzaarSignatureParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282C79571E65D07600E5B3E1 /* VzaarSignatureParameters.swift */; };
+		282C795A1E65D12900E5B3E1 /* VzaarRequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282C79591E65D12900E5B3E1 /* VzaarRequestParameters.swift */; };
+		2876763E1E647F0600E675BE /* Vzaar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287676341E647F0600E675BE /* Vzaar.framework */; };
+		287676451E647F0600E675BE /* Vzaar.h in Headers */ = {isa = PBXBuildFile; fileRef = 287676371E647F0600E675BE /* Vzaar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2876764F1E647F1400E675BE /* Vzaar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2876764E1E647F1400E675BE /* Vzaar.swift */; };
+		287E42711EDD63D10007765F /* VzaarCreateLinkUploadParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E42701EDD63D10007765F /* VzaarCreateLinkUploadParameters.swift */; };
+		287E42771EDD8B1E0007765F /* VzaarUpdatePlaylistParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E42761EDD8B1E0007765F /* VzaarUpdatePlaylistParameters.swift */; };
+		287E42791EDD8C9F0007765F /* VzaarDeletePlaylistParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E42781EDD8C9F0007765F /* VzaarDeletePlaylistParameters.swift */; };
+		287E427B1EDD8D440007765F /* VzaarGetPlaylistParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E427A1EDD8D440007765F /* VzaarGetPlaylistParameters.swift */; };
+		2882AD321ED5C2880088F7E4 /* VzaarGetVideosParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2882AD311ED5C2870088F7E4 /* VzaarGetVideosParameters.swift */; };
+		28C2B3CD1E68262100226606 /* VzaarSinglePartVideoSignatureParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C2B3CC1E68262100226606 /* VzaarSinglePartVideoSignatureParameters.swift */; };
+		28C2B3E51E68500400226606 /* VzaarSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C2B3E41E68500400226606 /* VzaarSignature.swift */; };
+		28C2B41D1E686E7300226606 /* VzaarError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C2B41C1E686E7300226606 /* VzaarError.swift */; };
+		28C2B4391E6976D100226606 /* VzaarMultiPartVideoSignatureParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C2B4381E6976D100226606 /* VzaarMultiPartVideoSignatureParameters.swift */; };
+		28C2B4691E69817A00226606 /* VzaarCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C2B4681E69817A00226606 /* VzaarCategory.swift */; };
+		28C2B46B1E6986A300226606 /* Meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C2B46A1E6986A300226606 /* Meta.swift */; };
+		28C2B46D1E69874000226606 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C2B46C1E69873F00226606 /* Links.swift */; };
+		28C2B46F1E69A4E200226606 /* VzaarVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C2B46E1E69A4E200226606 /* VzaarVideo.swift */; };
+		28C2B4711E69A79400226606 /* VzaarRendition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C2B4701E69A79400226606 /* VzaarRendition.swift */; };
+		28C2B4731E69AC8800226606 /* VzaarLegacyRendition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C2B4721E69AC8800226606 /* VzaarLegacyRendition.swift */; };
+		28C2B4771E69B51200226606 /* VzaarCreateVideoParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C2B4761E69B51200226606 /* VzaarCreateVideoParameters.swift */; };
+		28C2B4A71E6DC8C100226606 /* VzaarIngestRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C2B4A61E6DC8C100226606 /* VzaarIngestRecipe.swift */; };
+		28C2B4A91E6DC9C200226606 /* VzaarEncodingPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C2B4A81E6DC9C200226606 /* VzaarEncodingPreset.swift */; };
+		28C2B4AB1E6EB71D00226606 /* AWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C2B4AA1E6EB71D00226606 /* AWS.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2876763F1E647F0600E675BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2876762B1E647F0600E675BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 287676331E647F0600E675BE;
+			remoteInfo = Vzaar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		28254F8D1ED6C92600683656 /* VzaarParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarParser.swift; sourceTree = "<group>"; };
+		28254F951ED6D99300683656 /* VzaarGetVideoParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarGetVideoParameters.swift; sourceTree = "<group>"; };
+		28254F971ED6E05700683656 /* VzaarConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarConfig.swift; sourceTree = "<group>"; };
+		28254F991ED71AC400683656 /* VzaarDeleteVideoParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarDeleteVideoParameters.swift; sourceTree = "<group>"; };
+		28254F9B1ED723E200683656 /* VzaarUpdateVideoParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarUpdateVideoParameters.swift; sourceTree = "<group>"; };
+		28254FA01ED72F1B00683656 /* VzaarGetCategoriesParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarGetCategoriesParameters.swift; sourceTree = "<group>"; };
+		28254FA71ED734EB00683656 /* VzaarCreateCategoryParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarCreateCategoryParameters.swift; sourceTree = "<group>"; };
+		28254FAA1ED8293C00683656 /* VzaarUpdateCategoryParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarUpdateCategoryParameters.swift; sourceTree = "<group>"; };
+		28254FAC1ED82B4F00683656 /* VzaarDeleteCategoryParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarDeleteCategoryParameters.swift; sourceTree = "<group>"; };
+		28254FAE1ED8394500683656 /* VzaarGetCategoryParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarGetCategoryParameters.swift; sourceTree = "<group>"; };
+		28254FB01ED83A6100683656 /* VzaarGetCategoriesSubtreeParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarGetCategoriesSubtreeParameters.swift; sourceTree = "<group>"; };
+		28254FB21ED84C0A00683656 /* VzaarGetIngestRecipesParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarGetIngestRecipesParameters.swift; sourceTree = "<group>"; };
+		28254FB41ED84C6700683656 /* VzaarGetIngestRecipeParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarGetIngestRecipeParameters.swift; sourceTree = "<group>"; };
+		28254FBD1ED855B800683656 /* VzaarCreateIngestRecipeParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarCreateIngestRecipeParameters.swift; sourceTree = "<group>"; };
+		28254FBF1ED861E100683656 /* VzaarGetEncodingPresetsParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarGetEncodingPresetsParameters.swift; sourceTree = "<group>"; };
+		28254FC71ED867B300683656 /* VzaarGetEncodingPresetParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarGetEncodingPresetParameters.swift; sourceTree = "<group>"; };
+		28254FCC1ED8713000683656 /* VzaarDeleteIngestRecipeParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarDeleteIngestRecipeParameters.swift; sourceTree = "<group>"; };
+		28254FCE1ED87AAC00683656 /* VzaarUpdateIngestRecipeParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarUpdateIngestRecipeParameters.swift; sourceTree = "<group>"; };
+		28254FD61ED8812100683656 /* VzaarPlaylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarPlaylist.swift; sourceTree = "<group>"; };
+		28254FD81ED8837400683656 /* VzaarGetPlaylistsParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarGetPlaylistsParameters.swift; sourceTree = "<group>"; };
+		28254FDA1ED8856C00683656 /* VzaarCreatePlaylistParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarCreatePlaylistParameters.swift; sourceTree = "<group>"; };
+		282C79571E65D07600E5B3E1 /* VzaarSignatureParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarSignatureParameters.swift; sourceTree = "<group>"; };
+		282C79591E65D12900E5B3E1 /* VzaarRequestParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarRequestParameters.swift; sourceTree = "<group>"; };
+		287676341E647F0600E675BE /* Vzaar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Vzaar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		287676371E647F0600E675BE /* Vzaar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vzaar.h; sourceTree = "<group>"; };
+		287676381E647F0600E675BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2876763D1E647F0600E675BE /* VzaarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VzaarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2876764E1E647F1400E675BE /* Vzaar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vzaar.swift; sourceTree = "<group>"; };
+		287E42701EDD63D10007765F /* VzaarCreateLinkUploadParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarCreateLinkUploadParameters.swift; sourceTree = "<group>"; };
+		287E42761EDD8B1E0007765F /* VzaarUpdatePlaylistParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarUpdatePlaylistParameters.swift; sourceTree = "<group>"; };
+		287E42781EDD8C9F0007765F /* VzaarDeletePlaylistParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarDeletePlaylistParameters.swift; sourceTree = "<group>"; };
+		287E427A1EDD8D440007765F /* VzaarGetPlaylistParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarGetPlaylistParameters.swift; sourceTree = "<group>"; };
+		2882AD311ED5C2870088F7E4 /* VzaarGetVideosParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarGetVideosParameters.swift; sourceTree = "<group>"; };
+		28C2B3CC1E68262100226606 /* VzaarSinglePartVideoSignatureParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarSinglePartVideoSignatureParameters.swift; sourceTree = "<group>"; };
+		28C2B3E41E68500400226606 /* VzaarSignature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarSignature.swift; sourceTree = "<group>"; };
+		28C2B41C1E686E7300226606 /* VzaarError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarError.swift; sourceTree = "<group>"; };
+		28C2B4381E6976D100226606 /* VzaarMultiPartVideoSignatureParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarMultiPartVideoSignatureParameters.swift; sourceTree = "<group>"; };
+		28C2B4681E69817A00226606 /* VzaarCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarCategory.swift; sourceTree = "<group>"; };
+		28C2B46A1E6986A300226606 /* Meta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meta.swift; sourceTree = "<group>"; };
+		28C2B46C1E69873F00226606 /* Links.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
+		28C2B46E1E69A4E200226606 /* VzaarVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarVideo.swift; sourceTree = "<group>"; };
+		28C2B4701E69A79400226606 /* VzaarRendition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarRendition.swift; sourceTree = "<group>"; };
+		28C2B4721E69AC8800226606 /* VzaarLegacyRendition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarLegacyRendition.swift; sourceTree = "<group>"; };
+		28C2B4761E69B51200226606 /* VzaarCreateVideoParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarCreateVideoParameters.swift; sourceTree = "<group>"; };
+		28C2B4A61E6DC8C100226606 /* VzaarIngestRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarIngestRecipe.swift; sourceTree = "<group>"; };
+		28C2B4A81E6DC9C200226606 /* VzaarEncodingPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarEncodingPreset.swift; sourceTree = "<group>"; };
+		28C2B4AA1E6EB71D00226606 /* AWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWS.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		287676301E647F0600E675BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2876763A1E647F0600E675BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2876763E1E647F0600E675BE /* Vzaar.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2876762A1E647F0600E675BE = {
+			isa = PBXGroup;
+			children = (
+				287676361E647F0600E675BE /* Vzaar */,
+				287676351E647F0600E675BE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		287676351E647F0600E675BE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				287676341E647F0600E675BE /* Vzaar.framework */,
+				2876763D1E647F0600E675BE /* VzaarTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		287676361E647F0600E675BE /* Vzaar */ = {
+			isa = PBXGroup;
+			children = (
+				287676371E647F0600E675BE /* Vzaar.h */,
+				287676381E647F0600E675BE /* Info.plist */,
+				28C2B4AA1E6EB71D00226606 /* AWS.swift */,
+				2876764E1E647F1400E675BE /* Vzaar.swift */,
+				28254F8D1ED6C92600683656 /* VzaarParser.swift */,
+				28254F971ED6E05700683656 /* VzaarConfig.swift */,
+				28C2B3E71E6855F900226606 /* Parameters */,
+				28C2B3E61E6855EC00226606 /* Models */,
+			);
+			path = Vzaar;
+			sourceTree = "<group>";
+		};
+		287E42691EDD63070007765F /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				2882AD311ED5C2870088F7E4 /* VzaarGetVideosParameters.swift */,
+				28254F951ED6D99300683656 /* VzaarGetVideoParameters.swift */,
+				28C2B4761E69B51200226606 /* VzaarCreateVideoParameters.swift */,
+				28254F9B1ED723E200683656 /* VzaarUpdateVideoParameters.swift */,
+				28254F991ED71AC400683656 /* VzaarDeleteVideoParameters.swift */,
+			);
+			name = Videos;
+			sourceTree = "<group>";
+		};
+		287E426A1EDD63160007765F /* Video Categories */ = {
+			isa = PBXGroup;
+			children = (
+				28254FA01ED72F1B00683656 /* VzaarGetCategoriesParameters.swift */,
+				28254FAE1ED8394500683656 /* VzaarGetCategoryParameters.swift */,
+				28254FB01ED83A6100683656 /* VzaarGetCategoriesSubtreeParameters.swift */,
+				28254FA71ED734EB00683656 /* VzaarCreateCategoryParameters.swift */,
+				28254FAA1ED8293C00683656 /* VzaarUpdateCategoryParameters.swift */,
+				28254FAC1ED82B4F00683656 /* VzaarDeleteCategoryParameters.swift */,
+			);
+			name = "Video Categories";
+			sourceTree = "<group>";
+		};
+		287E426B1EDD631E0007765F /* Upload Signatures */ = {
+			isa = PBXGroup;
+			children = (
+				28C2B3CC1E68262100226606 /* VzaarSinglePartVideoSignatureParameters.swift */,
+				28C2B4381E6976D100226606 /* VzaarMultiPartVideoSignatureParameters.swift */,
+				282C79571E65D07600E5B3E1 /* VzaarSignatureParameters.swift */,
+			);
+			name = "Upload Signatures";
+			sourceTree = "<group>";
+		};
+		287E426C1EDD632C0007765F /* Link Uploads */ = {
+			isa = PBXGroup;
+			children = (
+				287E42701EDD63D10007765F /* VzaarCreateLinkUploadParameters.swift */,
+			);
+			name = "Link Uploads";
+			sourceTree = "<group>";
+		};
+		287E426D1EDD63340007765F /* Ingest Recipes */ = {
+			isa = PBXGroup;
+			children = (
+				28254FB21ED84C0A00683656 /* VzaarGetIngestRecipesParameters.swift */,
+				28254FB41ED84C6700683656 /* VzaarGetIngestRecipeParameters.swift */,
+				28254FBD1ED855B800683656 /* VzaarCreateIngestRecipeParameters.swift */,
+				28254FCE1ED87AAC00683656 /* VzaarUpdateIngestRecipeParameters.swift */,
+				28254FCC1ED8713000683656 /* VzaarDeleteIngestRecipeParameters.swift */,
+			);
+			name = "Ingest Recipes";
+			sourceTree = "<group>";
+		};
+		287E426E1EDD633D0007765F /* Encoding Presets */ = {
+			isa = PBXGroup;
+			children = (
+				28254FBF1ED861E100683656 /* VzaarGetEncodingPresetsParameters.swift */,
+				28254FC71ED867B300683656 /* VzaarGetEncodingPresetParameters.swift */,
+			);
+			name = "Encoding Presets";
+			sourceTree = "<group>";
+		};
+		287E426F1EDD63480007765F /* Playlists */ = {
+			isa = PBXGroup;
+			children = (
+				28254FD81ED8837400683656 /* VzaarGetPlaylistsParameters.swift */,
+				287E427A1EDD8D440007765F /* VzaarGetPlaylistParameters.swift */,
+				28254FDA1ED8856C00683656 /* VzaarCreatePlaylistParameters.swift */,
+				287E42761EDD8B1E0007765F /* VzaarUpdatePlaylistParameters.swift */,
+				287E42781EDD8C9F0007765F /* VzaarDeletePlaylistParameters.swift */,
+			);
+			name = Playlists;
+			sourceTree = "<group>";
+		};
+		28C2B3E61E6855EC00226606 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				28C2B41C1E686E7300226606 /* VzaarError.swift */,
+				28C2B3E41E68500400226606 /* VzaarSignature.swift */,
+				28C2B4681E69817A00226606 /* VzaarCategory.swift */,
+				28C2B46E1E69A4E200226606 /* VzaarVideo.swift */,
+				28254FD61ED8812100683656 /* VzaarPlaylist.swift */,
+				28C2B4701E69A79400226606 /* VzaarRendition.swift */,
+				28C2B4721E69AC8800226606 /* VzaarLegacyRendition.swift */,
+				28C2B4A61E6DC8C100226606 /* VzaarIngestRecipe.swift */,
+				28C2B4A81E6DC9C200226606 /* VzaarEncodingPreset.swift */,
+				28C2B46A1E6986A300226606 /* Meta.swift */,
+				28C2B46C1E69873F00226606 /* Links.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		28C2B3E71E6855F900226606 /* Parameters */ = {
+			isa = PBXGroup;
+			children = (
+				282C79591E65D12900E5B3E1 /* VzaarRequestParameters.swift */,
+				287E42691EDD63070007765F /* Videos */,
+				287E426A1EDD63160007765F /* Video Categories */,
+				287E426B1EDD631E0007765F /* Upload Signatures */,
+				287E426C1EDD632C0007765F /* Link Uploads */,
+				287E426D1EDD63340007765F /* Ingest Recipes */,
+				287E426E1EDD633D0007765F /* Encoding Presets */,
+				287E426F1EDD63480007765F /* Playlists */,
+			);
+			name = Parameters;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		287676311E647F0600E675BE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				287676451E647F0600E675BE /* Vzaar.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		287676331E647F0600E675BE /* Vzaar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 287676481E647F0600E675BE /* Build configuration list for PBXNativeTarget "Vzaar" */;
+			buildPhases = (
+				2876762F1E647F0600E675BE /* Sources */,
+				287676301E647F0600E675BE /* Frameworks */,
+				287676311E647F0600E675BE /* Headers */,
+				287676321E647F0600E675BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Vzaar;
+			productName = Vzaar;
+			productReference = 287676341E647F0600E675BE /* Vzaar.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		2876763C1E647F0600E675BE /* VzaarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2876764B1E647F0600E675BE /* Build configuration list for PBXNativeTarget "VzaarTests" */;
+			buildPhases = (
+				287676391E647F0600E675BE /* Sources */,
+				2876763A1E647F0600E675BE /* Frameworks */,
+				2876763B1E647F0600E675BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				287676401E647F0600E675BE /* PBXTargetDependency */,
+			);
+			name = VzaarTests;
+			productName = VzaarTests;
+			productReference = 2876763D1E647F0600E675BE /* VzaarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2876762B1E647F0600E675BE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Andreas Bagias";
+				TargetAttributes = {
+					287676331E647F0600E675BE = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 46QQZDC6KN;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+					2876763C1E647F0600E675BE = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 46QQZDC6KN;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2876762E1E647F0600E675BE /* Build configuration list for PBXProject "Vzaar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2876762A1E647F0600E675BE;
+			productRefGroup = 287676351E647F0600E675BE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				287676331E647F0600E675BE /* Vzaar */,
+				2876763C1E647F0600E675BE /* VzaarTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		287676321E647F0600E675BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2876763B1E647F0600E675BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2876762F1E647F0600E675BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28C2B41D1E686E7300226606 /* VzaarError.swift in Sources */,
+				287E42791EDD8C9F0007765F /* VzaarDeletePlaylistParameters.swift in Sources */,
+				28254FA81ED734EB00683656 /* VzaarCreateCategoryParameters.swift in Sources */,
+				28254FDB1ED8856C00683656 /* VzaarCreatePlaylistParameters.swift in Sources */,
+				28254F961ED6D99300683656 /* VzaarGetVideoParameters.swift in Sources */,
+				28254FD71ED8812100683656 /* VzaarPlaylist.swift in Sources */,
+				287E42711EDD63D10007765F /* VzaarCreateLinkUploadParameters.swift in Sources */,
+				28C2B46F1E69A4E200226606 /* VzaarVideo.swift in Sources */,
+				28C2B4391E6976D100226606 /* VzaarMultiPartVideoSignatureParameters.swift in Sources */,
+				28254FCD1ED8713000683656 /* VzaarDeleteIngestRecipeParameters.swift in Sources */,
+				28254F9C1ED723E200683656 /* VzaarUpdateVideoParameters.swift in Sources */,
+				28254FB51ED84C6700683656 /* VzaarGetIngestRecipeParameters.swift in Sources */,
+				28C2B4AB1E6EB71D00226606 /* AWS.swift in Sources */,
+				28C2B3CD1E68262100226606 /* VzaarSinglePartVideoSignatureParameters.swift in Sources */,
+				28254FD91ED8837400683656 /* VzaarGetPlaylistsParameters.swift in Sources */,
+				28254FA11ED72F1B00683656 /* VzaarGetCategoriesParameters.swift in Sources */,
+				28254FB11ED83A6100683656 /* VzaarGetCategoriesSubtreeParameters.swift in Sources */,
+				28254F8E1ED6C92600683656 /* VzaarParser.swift in Sources */,
+				28254FB31ED84C0A00683656 /* VzaarGetIngestRecipesParameters.swift in Sources */,
+				2882AD321ED5C2880088F7E4 /* VzaarGetVideosParameters.swift in Sources */,
+				28254FCF1ED87AAC00683656 /* VzaarUpdateIngestRecipeParameters.swift in Sources */,
+				28254FAB1ED8293C00683656 /* VzaarUpdateCategoryParameters.swift in Sources */,
+				28C2B4731E69AC8800226606 /* VzaarLegacyRendition.swift in Sources */,
+				28254FBE1ED855B800683656 /* VzaarCreateIngestRecipeParameters.swift in Sources */,
+				28C2B4711E69A79400226606 /* VzaarRendition.swift in Sources */,
+				28254FAF1ED8394500683656 /* VzaarGetCategoryParameters.swift in Sources */,
+				28C2B4A71E6DC8C100226606 /* VzaarIngestRecipe.swift in Sources */,
+				28254FC01ED861E100683656 /* VzaarGetEncodingPresetsParameters.swift in Sources */,
+				28C2B3E51E68500400226606 /* VzaarSignature.swift in Sources */,
+				2876764F1E647F1400E675BE /* Vzaar.swift in Sources */,
+				28C2B4A91E6DC9C200226606 /* VzaarEncodingPreset.swift in Sources */,
+				28C2B4691E69817A00226606 /* VzaarCategory.swift in Sources */,
+				28254FC81ED867B300683656 /* VzaarGetEncodingPresetParameters.swift in Sources */,
+				287E42771EDD8B1E0007765F /* VzaarUpdatePlaylistParameters.swift in Sources */,
+				28254F981ED6E05700683656 /* VzaarConfig.swift in Sources */,
+				28C2B46D1E69874000226606 /* Links.swift in Sources */,
+				28254FAD1ED82B4F00683656 /* VzaarDeleteCategoryParameters.swift in Sources */,
+				282C79581E65D07600E5B3E1 /* VzaarSignatureParameters.swift in Sources */,
+				28254F9A1ED71AC400683656 /* VzaarDeleteVideoParameters.swift in Sources */,
+				28C2B46B1E6986A300226606 /* Meta.swift in Sources */,
+				287E427B1EDD8D440007765F /* VzaarGetPlaylistParameters.swift in Sources */,
+				28C2B4771E69B51200226606 /* VzaarCreateVideoParameters.swift in Sources */,
+				282C795A1E65D12900E5B3E1 /* VzaarRequestParameters.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		287676391E647F0600E675BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		287676401E647F0600E675BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 287676331E647F0600E675BE /* Vzaar */;
+			targetProxy = 2876763F1E647F0600E675BE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		287676461E647F0600E675BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = "@rpath";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		287676471E647F0600E675BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = "@rpath";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		287676491E647F0600E675BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 46QQZDC6KN;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Vzaar/Info.plist;
+				INSTALL_PATH = "@rpath";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-fembed-bitcode-marker";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreasbagias.Vzaar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		2876764A1E647F0600E675BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 46QQZDC6KN;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Vzaar/Info.plist;
+				INSTALL_PATH = "@rpath";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreasbagias.Vzaar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		2876764C1E647F0600E675BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 46QQZDC6KN;
+				INFOPLIST_FILE = VzaarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreasbagias.VzaarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		2876764D1E647F0600E675BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 46QQZDC6KN;
+				INFOPLIST_FILE = VzaarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreasbagias.VzaarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2876762E1E647F0600E675BE /* Build configuration list for PBXProject "Vzaar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				287676461E647F0600E675BE /* Debug */,
+				287676471E647F0600E675BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		287676481E647F0600E675BE /* Build configuration list for PBXNativeTarget "Vzaar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				287676491E647F0600E675BE /* Debug */,
+				2876764A1E647F0600E675BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2876764B1E647F0600E675BE /* Build configuration list for PBXNativeTarget "VzaarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2876764C1E647F0600E675BE /* Debug */,
+				2876764D1E647F0600E675BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2876762B1E647F0600E675BE /* Project object */;
+}
