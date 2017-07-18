@@ -180,7 +180,7 @@ public class Vzaar: NSObject, AWSUploadProgressDelegate{
      *  @param uploadProgressDelegate                The delegate to get the progress of the video file upload
      *  @param fileURLPath                           The URL path to the video file to upload
      */
-    public func uploadVideo(uploadProgressDelegate: VzaarUploadProgressDelegate,
+    public func uploadVideo(uploadProgressDelegate: VzaarUploadProgressDelegate?,
                             singlePartVideoSignatureParameters: VzaarSinglePartVideoSignatureParameters,
                             fileURLPath: URL,
                             success: @escaping (_ video:VzaarVideo?) -> Void,
@@ -231,7 +231,7 @@ public class Vzaar: NSObject, AWSUploadProgressDelegate{
      *  @param uploadProgressDelegate                The delegate to get the progress of the video file upload
      *  @param fileURLPath                           The URL path to the video file to upload
      */
-    public func uploadVideo(uploadProgressDelegate: VzaarUploadProgressDelegate,
+    public func uploadVideo(uploadProgressDelegate: VzaarUploadProgressDelegate?,
                             multiPartVideoSignatureParameters: VzaarMultiPartVideoSignatureParameters,
                             fileURLPath: URL,
                             success: @escaping (_ video:VzaarVideo?) -> Void,

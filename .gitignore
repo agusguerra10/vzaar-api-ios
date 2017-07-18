@@ -8,5 +8,6 @@ build
 *~.xib 
 VzaarSwift.podspec
 .DS_Store
+.swift-version
 Pods/ 
 xcuserdata/
