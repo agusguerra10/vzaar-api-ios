@@ -25,9 +25,10 @@ public class VzaarCreateLinkUploadParameters: VzaarRequestParameters{
         super.init()
     }
     
-    public convenience init(url: String, uploader: String) {
+    public convenience init(url: String) {
         self.init()
         
+        self.url = url
         super.method = MethodType.post
         super.urlSuffix = "link_uploads"
     }

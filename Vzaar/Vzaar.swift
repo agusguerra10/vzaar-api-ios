@@ -906,7 +906,7 @@ public class Vzaar: NSObject, AWSUploadProgressDelegate{
      *  @param vzaarCreateLinkUploadParameters    The query parameters for the request headers
      *
      */
-    public func getLinkUpload(vzaarCreateLinkUploadParameters: VzaarCreateLinkUploadParameters,
+    public func createLinkUpload(vzaarCreateLinkUploadParameters: VzaarCreateLinkUploadParameters,
                             success: @escaping (_ video:VzaarVideo) -> Void,
                             failure: @escaping (_ error:VzaarError?) -> Void,
                             noResponse: @escaping (_ error:Error?) -> Void){
