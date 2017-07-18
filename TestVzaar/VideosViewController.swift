@@ -153,7 +153,7 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
     
     func uploadVideo(name: String, fileURLWithPath: URL){
         
-        let singlePartVideoSignatureParameters = VzaarSinglePartVideoSignatureParameters(uploader: "Swift 3.0.1")
+        let singlePartVideoSignatureParameters = VzaarSinglePartVideoSignatureParameters()
         singlePartVideoSignatureParameters.filename = name
         
         let directory = NSTemporaryDirectory()

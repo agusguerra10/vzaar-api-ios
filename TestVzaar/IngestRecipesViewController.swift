@@ -133,7 +133,6 @@ class IngestRecipesViewController: UIViewController , UITableViewDataSource, UIT
         
     }
     
-    
     internal func deleteIngestRecipe(ingestRecipeId: Int) {
         
         let deleteIngestRecipeParameters = VzaarDeleteIngestRecipeParameters(id: Int32(ingestRecipeId))

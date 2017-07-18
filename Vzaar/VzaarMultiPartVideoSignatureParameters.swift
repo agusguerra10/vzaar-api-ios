@@ -20,16 +20,8 @@ public class VzaarMultiPartVideoSignatureParameters: VzaarRequestParameters {
      * You MUST specify a desired part size in MB
      */
     
-    
-    override init(){
-        super.init()
-        
-        super.method = MethodType.post
-        super.urlSuffix = "signature/multipart"
-    }
-   
-    //REQUIRED  uploader description used for metadata, analytics and support
-    public var uploader: String?
+    //REQUIRED (HARDCODED) uploader description used for metadata, analytics and support
+    private var uploader: String = "ios-sdk-1.0.1"
     //REQUIRED  base name of your video file
     public var filename: String?
     //REQUIRED  size in bytes of your video file
@@ -37,19 +29,26 @@ public class VzaarMultiPartVideoSignatureParameters: VzaarRequestParameters {
     //OPTIONAL  desired part size specified as a string
     public var desired_part_size: String?
     
-    public convenience init(uploader: String, filename: String, filesize: NSNumber/*objective-C*/){
+    public override init(){
+        super.init()
+        
+        super.method = MethodType.post
+        super.urlSuffix = "signature/multipart"
+    }
+
+    public convenience init(filename: String, filesize: NSNumber/*objective-C*/){
+
         self.init()
         
-        self.uploader = uploader
         self.filename = filename
         self.filesize = filesize
 
     }
-    
-    public convenience init(uploader: String, filename: String, filesize: NSNumber/*objective-C*/, desired_part_size: String){
+
+    public convenience init(filename: String, filesize: NSNumber/*objective-C*/, desired_part_size: String){
+
         self.init()
         
-        self.uploader = uploader
         self.filename = filename
         self.filesize = filesize
         self.desired_part_size = desired_part_size

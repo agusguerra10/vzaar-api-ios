@@ -10,32 +10,23 @@ import Foundation
 
 public class VzaarSinglePartVideoSignatureParameters: VzaarRequestParameters {
 
-    override init(){
+    //REQUIRED (HARDCODED) uploader description used for metadata, analytics and support
+    private var uploader: String = "ios-sdk-1.0.1"
+    //OPTIONAL  base name of your video file
+    public var filename: String?
+    //OPTIONAL  size in bytes of your video file
+    public var filesize: NSNumber?/*objective-C*/
+
+    public override init(){
         super.init()
         
         super.method = MethodType.post
         super.urlSuffix = "signature/single"
     }
-    
-    //REQUIRED  uploader description used for metadata, analytics and support
-    public var uploader: String?
-    //OPTIONAL  base name of your video file
-    public var filename: String?
-    //OPTIONAL  size in bytes of your video file
-    public var filesize: NSNumber?/*objective-C*/
-    
-    public convenience init(uploader: String){
+
+    public convenience init(filename: String, filesize: NSNumber/*objective-C*/){
         self.init()
         
-        self.uploader = uploader
-
-
-    }
-    
-    public convenience init(uploader: String, filename: String, filesize: NSNumber/*objective-C*/){
-        self.init()
-        
-        self.uploader = uploader
         self.filename = filename
         self.filesize = filesize
     }
