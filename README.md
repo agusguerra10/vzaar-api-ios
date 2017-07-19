@@ -1,6 +1,6 @@
 # README #
 
-Video Hosting For Business.
+Video Hosting For Business. 
 
 * Vzaar is an online video platform
 * It allows your customers to upload their own videos via the vzaar API.
