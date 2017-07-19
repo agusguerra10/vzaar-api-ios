@@ -42,6 +42,30 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
     
     func getVideos(){
         
+        
+        let categorySubtreeParameter = VzaarGetCategoriesSubtreeParameters(id: Int32(categoryId))
+        
+        Vzaar.sharedInstance().getCategoriesSubtree(vzaarGetCategoriesSubtreeParameters: categorySubtreeParameter, success: { (vzaarCategories) in
+            
+            //Handle categories from the response
+            
+        }, failure: { (vzaarError) in
+            print(vzaarError)
+        }) { (error) in
+            print(error)
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         self.loadingView = LoadingView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
         let window: UIWindow = (UIApplication.shared.delegate?.window!)!
         window.addSubview(self.loadingView)
