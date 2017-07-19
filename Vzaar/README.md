@@ -6,7 +6,7 @@ Video Hosting For Business.
 * It allows your customers to upload their own videos via the vzaar API.
 * Pull information from vzaar databases and combine them with your app's own data. 
 * For instance sync your product catalogue with your videos so that videos always appear on the right product page.
-* Version 1.0.1
+* Version 1.0.4
 
 ## Documentation ##
 
@@ -192,6 +192,20 @@ print(error)
 let categoriesParameters = VzaarGetCategoriesParameters()
 
 Vzaar.sharedInstance().getCategories(vzaarGetCategoriesParameters: categoriesParameters, success: { (vzaarCategories) in
+
+//Handle categories from the response.
+
+}, failure: { (vzaarError) in
+print(vzaarError)
+}) { (error) in
+print(error)
+}
+```
+### Get Category Subtree ###
+```
+let categorySubtreeParameter = VzaarGetCategoriesSubtreeParameters(id: Int32(categoryId))
+
+Vzaar.sharedInstance().getCategoriesSubtree(vzaarGetCategoriesSubtreeParameters: categorySubtreeParameter, success: { (vzaarCategories) in
 
 //Handle categories from the response.
 
@@ -506,7 +520,7 @@ print(error)
 #!objective-c
 target 'YourProject' do
 
-pod 'VzaarSwift', '~> 1.0.1-objc'
+pod 'VzaarSwift', '~> 1.0.4-objc'
 
 end
 use_frameworks!
