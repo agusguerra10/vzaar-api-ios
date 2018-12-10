@@ -21,7 +21,7 @@ public class VzaarSinglePartVideoSignatureParameters: VzaarRequestParameters {
         super.init()
         
         super.method = MethodType.post
-        super.urlSuffix = "signature/single"
+        super.urlSuffix = "signature/single/2"
     }
     
     public convenience init(filename: String, filesize: Int64){

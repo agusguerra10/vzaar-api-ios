@@ -191,4 +191,35 @@ class VzaarParser: NSObject {
             failure(error.localizedDescription)
         }
     }
+    
+    // Subtitles data parser
+    static func getSubtitles(withData data: Data, success: @escaping (_ subtitles:[VzaarSubtitle]) -> Void, failure: @escaping (_ message: String) -> Void){
+        do {
+            if let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as? [String: Any]{
+                
+                if let subtitleArrayDict = json["data"] as? [NSDictionary]{
+                    var subtitles: [VzaarSubtitle] = [VzaarSubtitle]()
+                    for subtitleDict in subtitleArrayDict{
+                        subtitles.append(VzaarSubtitle(withDict: subtitleDict))
+                    }
+                    success(subtitles)
+                }
+                
+            }
+        } catch let error{
+            failure(error.localizedDescription)
+        }
+    }
+    
+    // Subtitle data parser
+    static func getSubtitle(withData data: Data, success: @escaping (_ subtitle:VzaarSubtitle) -> Void, failure: @escaping (_ message: String) -> Void){
+        do {
+            if let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as? [String: Any]{
+                let subtitle: VzaarSubtitle = VzaarSubtitle(withDict: json["data"] as! NSDictionary)
+                success(subtitle)
+            }
+        } catch let error{
+            failure(error.localizedDescription)
+        }
+    }
 }

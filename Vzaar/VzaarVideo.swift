@@ -27,6 +27,10 @@ public class VzaarVideo: NSObject{
     public var categories: [VzaarCategory]?
     public var renditions: [VzaarRendition]?
     public var legacy_renditions: [VzaarLegacyRendition]?
+    public var account_name: String? //NEW
+    public var user_login: String? //NEW
+    public var poster_url: String? //NEW
+    public var asset_url: String? //NEW
     
     
     public init(withDict dict: NSDictionary){
@@ -94,6 +98,18 @@ public class VzaarVideo: NSObject{
                 self.legacy_renditions?.append(legacy_rendition)
             }
         }
-    
+        if let account_name = dict["account_name"] as? String{
+            self.account_name = account_name
+        }
+        if let user_login = dict["user_login"] as? String{
+            self.user_login = user_login
+        }
+        if let poster_url = dict["poster_url"] as? String{
+            self.poster_url = poster_url
+        }
+        if let asset_url = dict["asset_url"] as? String{
+            self.asset_url = asset_url
+        }
+        
     }
 }
