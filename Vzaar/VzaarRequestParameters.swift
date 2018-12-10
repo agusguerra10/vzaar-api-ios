@@ -65,6 +65,90 @@ public class VzaarRequestParameters: NSObject{
         }
     }
     
+    func createFileRequest(withConfig config: VzaarConfig) -> NSMutableURLRequest{
+        
+        let request: NSMutableURLRequest = NSMutableURLRequest()
+        
+        request.httpMethod = (method?.rawValue)!
+        let boundary = "Boundary-\(UUID().uuidString)"
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        request.addValue(config.clientId, forHTTPHeaderField: "X-Client-Id")
+        request.addValue(config.authToken, forHTTPHeaderField: "X-Auth-Token")
+        request.url = getURL()
+        
+        if let bodyparameters = bodyParameters, let file = bodyparameters["file"] as? String{
+            
+            let url = URL(fileURLWithPath: file)
+            let fileData = try! Data(contentsOf: url)
+            
+            let filename = url.lastPathComponent
+            
+            var dictionary: [String: String] = [String: String]()
+            
+            if let code = bodyparameters["code"] as? String{
+                dictionary["code"] = code
+            }
+            if let title = bodyparameters["title"] as? String{
+                dictionary["title"] = title
+            }
+            
+            request.httpBody = createBody(parameters: dictionary, boundary: boundary, data: fileData, name: "file", mimeType: "text/plain", filename: filename)
+        }
+        
+        return request
+    }
+    
+    func createImageRequest(withConfig config: VzaarConfig) -> NSMutableURLRequest{
+        
+        let request: NSMutableURLRequest = NSMutableURLRequest()
+        
+        request.httpMethod = (method?.rawValue)!
+        let boundary = "Boundary-\(UUID().uuidString)"
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        request.addValue(config.clientId, forHTTPHeaderField: "X-Client-Id")
+        request.addValue(config.authToken, forHTTPHeaderField: "X-Auth-Token")
+        request.url = getURL()
+        
+        if let bodyparameters = bodyParameters, let imageData = bodyparameters["image"] as? Data{
+            request.httpBody = createBody(parameters: [:], boundary: boundary, data: imageData, name: "image", mimeType: "application/octet-stream", filename: "image.jpg")
+        }
+        
+        return request
+    }
+    
+    private func createBody(parameters: [String: String],
+                            boundary: String,
+                            data: Data,
+                            name: String,
+                            mimeType: String,
+                            filename: String) -> Data {
+        let body = NSMutableData()
+        
+        let boundaryPrefix = "--\(boundary)\r\n"
+        
+        for (key, value) in parameters {
+            body.appendString(boundaryPrefix)
+            body.appendString("Content-Disposition: form-data; name=\"\(key)\"\r\n")
+            let valueData = value.data(using: String.Encoding.utf8, allowLossyConversion: false)
+            if let valueData = valueData{
+                body.appendString("Content-Length: \(valueData.count)\r\n\r\n")
+
+            }
+            body.appendString("\(value)\r\n")
+        }
+        
+        body.appendString(boundaryPrefix)
+        body.appendString("Content-Disposition: form-data; name=\"\(name)\"; filename=\"\(filename)\"\r\n")
+        body.appendString("Content-Length: \(data.count)\r\n")
+        body.appendString("Content-Type: \(mimeType)\r\n\r\n")
+        body.append(data)
+        body.appendString("\r\n")
+        body.appendString("--".appending(boundary.appending("--")))
+        
+        return body as Data
+    }
+    
+    
 }
 
 enum MethodType: String{
