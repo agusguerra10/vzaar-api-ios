@@ -35,7 +35,8 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
         let refreshVideosButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(refreshVideosAction))
         self.navigationItem.rightBarButtonItems = [selectVideobutton, refreshVideosButton]
         
-        Vzaar.sharedInstance().config = VzaarConfig(clientId: "YOUR_CLIENT_ID", authToken: "YOUR_AUTH_TOKEN")
+        
+        Vzaar.sharedInstance().config = VzaarConfig(clientId: "YOUR-CLIENT-ID", authToken: "YOUR-AUTH-TOKEN")
         getVideos()
         
     }
@@ -51,8 +52,25 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
     }
     
     func actionCancelUploadTask(){
-        Vzaar.sharedInstance().cancelUploadTask()
-        if loadingView != nil{ loadingView.removeFromSuperview() }
+        
+        Vzaar.sharedInstance().suspendUploadTask()
+        if self.loadingView != nil{ self.loadingView.isHidden = true }
+        print("--------SUSPENDED-----------")
+        
+        let alertController = UIAlertController(title: "Suspended", message: "The video upload has been suspended. You can resume or cancel the video upload.", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Resume", style: UIAlertActionStyle.default, handler: { (alertAction) in
+            print("--------RESUMED-----------")
+            Vzaar.sharedInstance().resumeUploadTask()
+            if self.loadingView != nil{ self.loadingView.isHidden = false }
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: { (alertAction) in
+            print("--------CANCELED-----------")
+            Vzaar.sharedInstance().cancelUploadTask()
+            if self.loadingView != nil{ self.loadingView.removeFromSuperview() }
+        }))
+        self.present(alertController, animated: true, completion: nil)
+        
+        
     }
     
     func getVideos(state: VzaarGetVideosParametersState){
@@ -152,13 +170,64 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
     
     func uploadVideo(name: String, fileURLWithPath: URL){
         
-        let singlePartVideoSignatureParameters = VzaarSinglePartVideoSignatureParameters()
-        singlePartVideoSignatureParameters.filename = name
-        
         let directory = NSTemporaryDirectory()
         let lastPathComponent = (fileURLWithPath.absoluteString as NSString).lastPathComponent
         let fullPath = directory + lastPathComponent
         let fileURLPath = URL(fileURLWithPath: fullPath)
+        
+        do{
+            
+            let data = try Data(contentsOf: fileURLPath)
+            
+            let filesize = data.count
+            print("filesize:\(filesize) bytes")
+            
+            if filesize > 16777216{ //16779030
+                multiPartUpload(name: name, fileURLPath: fileURLPath, filesize: filesize)
+            }else{
+                singlePartUpload(name: name, fileURLPath: fileURLPath)
+            }
+            
+        }catch let error{
+            print(error)
+        }
+        
+    }
+    
+    private func multiPartUpload(name: String, fileURLPath: URL, filesize: Int){
+        
+        let multipartVideoSignatureParameters = VzaarMultiPartVideoSignatureParameters(filename: name, filesize: Int64(filesize))
+        
+        Vzaar.sharedInstance().uploadVideo(uploadProgressDelegate: self,
+                                           multiPartVideoSignatureParameters: multipartVideoSignatureParameters,
+                                           fileURLPath: fileURLPath,
+                                           success: { (vzaarVideo) in
+                                            
+                                            DispatchQueue.main.async {
+                                                if self.loadingView != nil { self.loadingView.removeFromSuperview() }
+                                            }
+        }, failure: { (vzaarError) in
+            DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
+            if let vzaarError = vzaarError{
+                if let errors = vzaarError.errors{
+                    print(errors)
+                    VZError.alert(viewController: self, errors: errors)
+                }
+            }
+        }) { (error) in
+            DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
+            if let error = error{
+                print(error)
+            }
+        }
+    }
+    
+    private func singlePartUpload(name: String, fileURLPath: URL){
+        
+        let singlePartVideoSignatureParameters = VzaarSinglePartVideoSignatureParameters()
+        singlePartVideoSignatureParameters.filename = name
+        
+        
         
         Vzaar.sharedInstance().uploadVideo(uploadProgressDelegate: self,
                                            singlePartVideoSignatureParameters: singlePartVideoSignatureParameters,
@@ -184,11 +253,12 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
                 print(error)
             }
         }
+        
     }
     
     internal func deleteVideo(videoId: Int) {
         
-        let deleteVideoParameters = VzaarDeleteVideoParameters(id: Int32(videoId))
+        let deleteVideoParameters = VzaarDeleteVideoParameters(id: NSNumber(value: videoId))
         
         Vzaar.sharedInstance().deleteVideo(vzaarDeleteVideoParameters: deleteVideoParameters, success: { 
             
@@ -232,7 +302,7 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
         }
         alertController.addAction(UIAlertAction(title: "Update", style: UIAlertActionStyle.default, handler: { (_) in
             
-            let updateVideoParameters = VzaarUpdateVideoParameters(id: Int32(videoId))
+            let updateVideoParameters = VzaarUpdateVideoParameters(id: NSNumber(value: videoId))
             if let text = alertController.textFields?.first?.text{
                 updateVideoParameters.title = text
             }
@@ -269,6 +339,24 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
         alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
         self.present(alertController, animated: true, completion: nil)
         
+    }
+    
+    internal func addPosterButtonAction(videoId: Int) {
+        let vid = videosReady.filter { (video) -> Bool in
+            return video.id == videoId
+        }
+        if let video = vid.first{
+            performSegue(withIdentifier: "posterSegue", sender: video)
+        }
+    }
+    
+    internal func subtitlesButtonAction(videoId: Int) {
+        let vid = videosReady.filter { (video) -> Bool in
+            return video.id == videoId
+        }
+        if let video = vid.first{
+            performSegue(withIdentifier: "subtitlesSegue", sender: video)
+        }
     }
  
     // MARK - TableView Datasource
@@ -311,6 +399,8 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
         cell.delegate = self
         cell.setDeleteButton()
         cell.setUpdateButton()
+        cell.setPosterButton()
+        cell.setSubtitlesButton()
         
         return cell
     }
@@ -321,6 +411,15 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
         // Dispose of any resources that can be recreated.
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destination = segue.destination as? PosterViewController, let video = sender as? VzaarVideo{
+            destination.video = video
+        }else if let destination = segue.destination as? SubtitlesViewController, let video = sender as? VzaarVideo{
+            destination.videoId = NSNumber(value: video.id!)
+        }
+        
+    }
 
 }
 

@@ -29,6 +29,12 @@
 		28254FD91ED8837400683656 /* VzaarGetPlaylistsParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FD81ED8837400683656 /* VzaarGetPlaylistsParameters.swift */; };
 		28254FDB1ED8856C00683656 /* VzaarCreatePlaylistParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FDA1ED8856C00683656 /* VzaarCreatePlaylistParameters.swift */; };
 		282C795A1E65D12900E5B3E1 /* VzaarRequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282C79591E65D12900E5B3E1 /* VzaarRequestParameters.swift */; };
+		283E941F21B68B1C00F02E6F /* VzaarGetSubtitlesParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283E941E21B68B1C00F02E6F /* VzaarGetSubtitlesParameters.swift */; };
+		283E942421B6A09400F02E6F /* VzaarPostSubtitlesParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283E942321B6A09400F02E6F /* VzaarPostSubtitlesParameters.swift */; };
+		283E942621B6B85C00F02E6F /* VzaarDeleteSubtitleParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283E942521B6B85C00F02E6F /* VzaarDeleteSubtitleParameters.swift */; };
+		283E942821B6C1C800F02E6F /* VzaarUpdateSubtitleParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283E942721B6C1C800F02E6F /* VzaarUpdateSubtitleParameters.swift */; };
+		286B000621B5403400C34DBC /* VzaarUpdateImageFrameParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B000521B5403400C34DBC /* VzaarUpdateImageFrameParameters.swift */; };
+		286B000B21B5601900C34DBC /* VzaarUploadImageFrameParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B000A21B5601900C34DBC /* VzaarUploadImageFrameParameters.swift */; };
 		2876763E1E647F0600E675BE /* Vzaar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287676341E647F0600E675BE /* Vzaar.framework */; };
 		287676451E647F0600E675BE /* Vzaar.h in Headers */ = {isa = PBXBuildFile; fileRef = 287676371E647F0600E675BE /* Vzaar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2876764F1E647F1400E675BE /* Vzaar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2876764E1E647F1400E675BE /* Vzaar.swift */; };
@@ -37,6 +43,7 @@
 		287E42791EDD8C9F0007765F /* VzaarDeletePlaylistParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E42781EDD8C9F0007765F /* VzaarDeletePlaylistParameters.swift */; };
 		287E427B1EDD8D440007765F /* VzaarGetPlaylistParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E427A1EDD8D440007765F /* VzaarGetPlaylistParameters.swift */; };
 		2882AD321ED5C2880088F7E4 /* VzaarGetVideosParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2882AD311ED5C2870088F7E4 /* VzaarGetVideosParameters.swift */; };
+		28995CDC21B58EF70057EAD6 /* VzaarSubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28995CDB21B58EF70057EAD6 /* VzaarSubtitle.swift */; };
 		28C2B3CD1E68262100226606 /* VzaarSinglePartVideoSignatureParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C2B3CC1E68262100226606 /* VzaarSinglePartVideoSignatureParameters.swift */; };
 		28C2B3E51E68500400226606 /* VzaarSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C2B3E41E68500400226606 /* VzaarSignature.swift */; };
 		28C2B41D1E686E7300226606 /* VzaarError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C2B41C1E686E7300226606 /* VzaarError.swift */; };
@@ -86,6 +93,12 @@
 		28254FD81ED8837400683656 /* VzaarGetPlaylistsParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarGetPlaylistsParameters.swift; sourceTree = "<group>"; };
 		28254FDA1ED8856C00683656 /* VzaarCreatePlaylistParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarCreatePlaylistParameters.swift; sourceTree = "<group>"; };
 		282C79591E65D12900E5B3E1 /* VzaarRequestParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarRequestParameters.swift; sourceTree = "<group>"; };
+		283E941E21B68B1C00F02E6F /* VzaarGetSubtitlesParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VzaarGetSubtitlesParameters.swift; sourceTree = "<group>"; };
+		283E942321B6A09400F02E6F /* VzaarPostSubtitlesParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VzaarPostSubtitlesParameters.swift; sourceTree = "<group>"; };
+		283E942521B6B85C00F02E6F /* VzaarDeleteSubtitleParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VzaarDeleteSubtitleParameters.swift; sourceTree = "<group>"; };
+		283E942721B6C1C800F02E6F /* VzaarUpdateSubtitleParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VzaarUpdateSubtitleParameters.swift; sourceTree = "<group>"; };
+		286B000521B5403400C34DBC /* VzaarUpdateImageFrameParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VzaarUpdateImageFrameParameters.swift; sourceTree = "<group>"; };
+		286B000A21B5601900C34DBC /* VzaarUploadImageFrameParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VzaarUploadImageFrameParameters.swift; sourceTree = "<group>"; };
 		287676341E647F0600E675BE /* Vzaar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Vzaar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		287676371E647F0600E675BE /* Vzaar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vzaar.h; sourceTree = "<group>"; };
 		287676381E647F0600E675BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -96,6 +109,7 @@
 		287E42781EDD8C9F0007765F /* VzaarDeletePlaylistParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarDeletePlaylistParameters.swift; sourceTree = "<group>"; };
 		287E427A1EDD8D440007765F /* VzaarGetPlaylistParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarGetPlaylistParameters.swift; sourceTree = "<group>"; };
 		2882AD311ED5C2870088F7E4 /* VzaarGetVideosParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarGetVideosParameters.swift; sourceTree = "<group>"; };
+		28995CDB21B58EF70057EAD6 /* VzaarSubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VzaarSubtitle.swift; sourceTree = "<group>"; };
 		28C2B3CC1E68262100226606 /* VzaarSinglePartVideoSignatureParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarSinglePartVideoSignatureParameters.swift; sourceTree = "<group>"; };
 		28C2B3E41E68500400226606 /* VzaarSignature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarSignature.swift; sourceTree = "<group>"; };
 		28C2B41C1E686E7300226606 /* VzaarError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzaarError.swift; sourceTree = "<group>"; };
@@ -131,6 +145,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		283E941D21B68AB300F02E6F /* Subtitles */ = {
+			isa = PBXGroup;
+			children = (
+				283E941E21B68B1C00F02E6F /* VzaarGetSubtitlesParameters.swift */,
+				283E942321B6A09400F02E6F /* VzaarPostSubtitlesParameters.swift */,
+				283E942521B6B85C00F02E6F /* VzaarDeleteSubtitleParameters.swift */,
+				283E942721B6C1C800F02E6F /* VzaarUpdateSubtitleParameters.swift */,
+			);
+			name = Subtitles;
+			sourceTree = "<group>";
+		};
+		286B000421B53FFB00C34DBC /* Image Frames */ = {
+			isa = PBXGroup;
+			children = (
+				286B000521B5403400C34DBC /* VzaarUpdateImageFrameParameters.swift */,
+				286B000A21B5601900C34DBC /* VzaarUploadImageFrameParameters.swift */,
+			);
+			name = "Image Frames";
+			sourceTree = "<group>";
+		};
 		2876762A1E647F0600E675BE = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +284,7 @@
 				28C2B4721E69AC8800226606 /* VzaarLegacyRendition.swift */,
 				28C2B4A61E6DC8C100226606 /* VzaarIngestRecipe.swift */,
 				28C2B4A81E6DC9C200226606 /* VzaarEncodingPreset.swift */,
+				28995CDB21B58EF70057EAD6 /* VzaarSubtitle.swift */,
 				28C2B46A1E6986A300226606 /* Meta.swift */,
 				28C2B46C1E69873F00226606 /* Links.swift */,
 			);
@@ -267,6 +302,8 @@
 				287E426D1EDD63340007765F /* Ingest Recipes */,
 				287E426E1EDD633D0007765F /* Encoding Presets */,
 				287E426F1EDD63480007765F /* Playlists */,
+				286B000421B53FFB00C34DBC /* Image Frames */,
+				283E941D21B68AB300F02E6F /* Subtitles */,
 			);
 			name = Parameters;
 			sourceTree = "<group>";
@@ -385,16 +422,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				28C2B41D1E686E7300226606 /* VzaarError.swift in Sources */,
+				286B000621B5403400C34DBC /* VzaarUpdateImageFrameParameters.swift in Sources */,
 				287E42791EDD8C9F0007765F /* VzaarDeletePlaylistParameters.swift in Sources */,
 				28254FA81ED734EB00683656 /* VzaarCreateCategoryParameters.swift in Sources */,
 				28254FDB1ED8856C00683656 /* VzaarCreatePlaylistParameters.swift in Sources */,
 				28254F961ED6D99300683656 /* VzaarGetVideoParameters.swift in Sources */,
+				28995CDC21B58EF70057EAD6 /* VzaarSubtitle.swift in Sources */,
 				28254FD71ED8812100683656 /* VzaarPlaylist.swift in Sources */,
 				287E42711EDD63D10007765F /* VzaarCreateLinkUploadParameters.swift in Sources */,
+				283E942821B6C1C800F02E6F /* VzaarUpdateSubtitleParameters.swift in Sources */,
 				28C2B46F1E69A4E200226606 /* VzaarVideo.swift in Sources */,
 				28C2B4391E6976D100226606 /* VzaarMultiPartVideoSignatureParameters.swift in Sources */,
 				28254FCD1ED8713000683656 /* VzaarDeleteIngestRecipeParameters.swift in Sources */,
 				28254F9C1ED723E200683656 /* VzaarUpdateVideoParameters.swift in Sources */,
+				283E942421B6A09400F02E6F /* VzaarPostSubtitlesParameters.swift in Sources */,
 				28254FB51ED84C6700683656 /* VzaarGetIngestRecipeParameters.swift in Sources */,
 				28C2B4AB1E6EB71D00226606 /* AWS.swift in Sources */,
 				28C2B3CD1E68262100226606 /* VzaarSinglePartVideoSignatureParameters.swift in Sources */,
@@ -407,13 +448,16 @@
 				28254FCF1ED87AAC00683656 /* VzaarUpdateIngestRecipeParameters.swift in Sources */,
 				28254FAB1ED8293C00683656 /* VzaarUpdateCategoryParameters.swift in Sources */,
 				28C2B4731E69AC8800226606 /* VzaarLegacyRendition.swift in Sources */,
+				283E941F21B68B1C00F02E6F /* VzaarGetSubtitlesParameters.swift in Sources */,
 				28254FBE1ED855B800683656 /* VzaarCreateIngestRecipeParameters.swift in Sources */,
 				28C2B4711E69A79400226606 /* VzaarRendition.swift in Sources */,
+				283E942621B6B85C00F02E6F /* VzaarDeleteSubtitleParameters.swift in Sources */,
 				28254FAF1ED8394500683656 /* VzaarGetCategoryParameters.swift in Sources */,
 				28C2B4A71E6DC8C100226606 /* VzaarIngestRecipe.swift in Sources */,
 				28254FC01ED861E100683656 /* VzaarGetEncodingPresetsParameters.swift in Sources */,
 				28C2B3E51E68500400226606 /* VzaarSignature.swift in Sources */,
 				2876764F1E647F1400E675BE /* Vzaar.swift in Sources */,
+				286B000B21B5601900C34DBC /* VzaarUploadImageFrameParameters.swift in Sources */,
 				28C2B4A91E6DC9C200226606 /* VzaarEncodingPreset.swift in Sources */,
 				28C2B4691E69817A00226606 /* VzaarCategory.swift in Sources */,
 				28254FC81ED867B300683656 /* VzaarGetEncodingPresetParameters.swift in Sources */,

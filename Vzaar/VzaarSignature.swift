@@ -14,7 +14,6 @@ public class VzaarSignature: NSObject{
     public var key: String?
     public var acl: String?
     public var policy: String?
-    public var signature: String?
     public var success_action_status: String?
     public var content_type: String?
     public var guid: String?
@@ -23,6 +22,11 @@ public class VzaarSignature: NSObject{
     public var part_size: NSNumber?/*objective-C*/
     public var part_size_in_bytes: NSNumber?/*objective-C*/
     public var parts: NSNumber?/*objective-C*/
+    
+    public var x_amz_credential: String?
+    public var x_amz_algorithm: String?
+    public var x_amz_date: String?
+    public var x_amz_signature: String?
     
     
     init(withDictionary dict: NSDictionary){
@@ -38,9 +42,6 @@ public class VzaarSignature: NSObject{
         }
         if let policy = dict["policy"] as? String{
             self.policy = policy
-        }
-        if let signature = dict["signature"] as? String{
-            self.signature = signature
         }
         if let success_action_status = dict["success_action_status"] as? String{
             self.success_action_status = success_action_status
@@ -67,6 +68,18 @@ public class VzaarSignature: NSObject{
             self.parts = parts
         }
         
+        if let x_amz_credential = dict["x-amz-credential"] as? String{
+            self.x_amz_credential = x_amz_credential
+        }
+        if let x_amz_algorithm = dict["x-amz-algorithm"] as? String{
+            self.x_amz_algorithm = x_amz_algorithm
+        }
+        if let x_amz_date = dict["x-amz-date"] as? String{
+            self.x_amz_date = x_amz_date
+        }
+        if let x_amz_signature = dict["x-amz-signature"] as? String{
+            self.x_amz_signature = x_amz_signature
+        }
     
     }
     

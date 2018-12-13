@@ -6,7 +6,11 @@ Video Hosting For Business.
 * It allows your customers to upload their own videos via the vzaar API.
 * Pull information from vzaar databases and combine them with your app's own data. 
 * For instance sync your product catalogue with your videos so that videos always appear on the right product page.
+<<<<<<< HEAD:Vzaar/README.md
 * Version 1.0.4
+=======
+* Version 1.1.0
+>>>>>>> subtitles-imageframe-objc:Vzaar/README.md
 
 ## Documentation ##
 
@@ -62,6 +66,7 @@ vzaarGetVideosParameters.per_page = 50
 Vzaar.sharedInstance().getVideos(vzaarGetVideosParameters: vzaarGetVideosParameters, success: { (vzaarVideos) in
 
 self.videos = vzaarVideos
+//Handle UI response in Main Thread
 self.tableView.reloadData()
 
 }, failure: { (vzaarError) in
@@ -512,6 +517,95 @@ print(vzaarError)
 print(error)
 }
 ```
+## IMAGE FRAME ##
+### Set Image Frame  ###
+
+```
+#!swift
+let params = VzaarUpdateImageFrameParameters(id: Int32(videoId))
+Vzaar.sharedInstance().updateImageFrame(vzaarUpdateImageFrameParameters: params, success: { (vzaarVideo) in
+
+//Handle video from response
+
+}, failure: { (vzaarError) in
+print(vzaarError)
+}) { (error) in
+print(error)
+}
+```
+### Upload Image Frame  ###
+```
+let params = VzaarUploadImageFrameParameters(id: Int32(self.videoId), image: image)
+Vzaar.sharedInstance().uploadImageFrame(vzaarUploadImageFrameParameters: params, success: { (vzaarVideo) in
+
+//Handle video from response
+
+}, failure: { (vzaarError) in
+print(vzaarError)
+}) { (error) in
+print(error)
+}
+```
+
+## SUBTITLES ##
+### Get Subtitles  ###
+
+```
+let params = VzaarGetSubtitlesParameters(id: videoId)
+Vzaar.sharedInstance().getSubtitles(vzaarGetSubtitlesParameters: params, success: { (vzaarSubtitles) in
+
+//Handle subtitles array
+
+}, failure: { (vzaarError) in
+print(vzaarError)
+}) { (error) in
+print(error)
+}
+```
+### Create Subtitle  ###
+```
+let params = VzaarPostSubtitlesParameters(id: videoId)
+params.code = languageCode //example: en , fr, de etc...
+params.content = subtitlesContent //You can use either content or file parameter to create a Subtitle. File parameter is the fullPath to the subtitles file.
+Vzaar.sharedInstance().createSubtitle(vzaarPostSubtitlesParameters: params, success: { (vzaarSubtitle) in
+
+//Handle subtitle from response
+
+}, failure: { (vzaarError) in
+print(vzaarError)
+}) { (error) in
+print(error)
+}
+```
+### Update Subtitle  ###
+```
+let params = VzaarUpdateSubtitleParameters(id: videoId, subtitle: Int32(subtitleId))
+params.code = languageCode //example: en , fr, de etc...
+params.content = subtitlesContent //You can use either content or file parameter to create a Subtitle. File parameter is the fullPath to the subtitles file.
+Vzaar.sharedInstance().updateSubtitle(vzaarUpdateSubtitleParameters: params, success: { (vzaarSubtitle) in
+
+//Handle subtitle from response
+
+}, failure: { (vzaarError) in
+print(vzaarError)
+}) { (error) in
+print(error)
+}
+```
+### Delete Subtitle  ###
+```
+let params = VzaarDeleteSubtitlesParameters(id: videoId, subtitle: Int32(subtitleId))
+Vzaar.sharedInstance().deleteSubtitle(vzaarDeleteSubtitlesParameters: params, success: {
+
+//Handle UI subtitle removal
+
+}, failure: { (vzaarError) in
+print(vzaarError)
+}) { (error) in
+print(error)
+}
+```
+
 ### How do I get set up for an Objective-c project ###
 
 * If your project is in objective-c you have to use the specific version of the pod '1.0.1-objc' to access the classes and properties through the bridge headers.

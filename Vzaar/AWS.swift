@@ -17,14 +17,13 @@ class AWS: NSObject, URLSessionDelegate, URLSessionDataDelegate{
     static var instance: AWS!
     var totalBytes:Int64!
     var bytes:Int64 = 0
+    var totalBytesSent:Int64 = 0
     
     var delegate: AWSUploadProgressDelegate!
     var uploadTask: URLSessionTask!
     
     class func sharedInstance()-> AWS {
         self.instance = (self.instance ?? AWS())
-        self.instance.bytes = 0
-        self.instance.totalBytes = nil
         return self.instance
     }
     
@@ -38,7 +37,21 @@ class AWS: NSObject, URLSessionDelegate, URLSessionDataDelegate{
         }
     }
     
+    func suspendUploadTask(){
+        if uploadTask != nil {
+            uploadTask.suspend()
+        }
+    }
+    
+    func resumeUploadTask(){
+        if uploadTask != nil {
+            uploadTask.resume()
+        }
+    }
+    
     public func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
+        
+        print("bytesSent:\(bytesSent) totalBytesSent:\(totalBytesSent) totalBytesExpectedToSend:\(totalBytesExpectedToSend)")
         
         var total: Int64 = totalBytesExpectedToSend
         if self.totalBytes != nil {
@@ -46,12 +59,13 @@ class AWS: NSObject, URLSessionDelegate, URLSessionDataDelegate{
         }
         
         self.bytes += bytesSent
+        self.totalBytesSent = totalBytesSent
         
         let x = Float(self.bytes)/Float(total)
         let percentage = Double(round(100*x)/100)
         if delegate != nil { delegate.awsUploadProgress(progress: percentage) }
     }
-    
+
     func postFile(fileURLPath: URL,
                          signature: VzaarSignature,
                          singlePartVideoSignatureParameters: VzaarSinglePartVideoSignatureParameters,
@@ -62,6 +76,8 @@ class AWS: NSObject, URLSessionDelegate, URLSessionDataDelegate{
         if let fn = singlePartVideoSignatureParameters.filename{
             filename = fn
         }
+        
+        resetBytesCounters()
         
         postPart(fileURLPath: fileURLPath, signature: signature, part: nil, filename: filename, success: { (data, response) in
             success(data, response)
@@ -77,6 +93,7 @@ class AWS: NSObject, URLSessionDelegate, URLSessionDataDelegate{
                   success: @escaping () -> Void,
                   failure: @escaping (_ error:Error?) -> Void){
         
+        resetBytesCounters()
         self.totalBytes = multiPartVideoSignatureParameters.filesize! as! Int64
         
         postParts(fileURLPath: fileURLPath, signature: signature, multiPartVideoSignatureParameters: multiPartVideoSignatureParameters, success: { 
@@ -89,17 +106,31 @@ class AWS: NSObject, URLSessionDelegate, URLSessionDataDelegate{
         
     }
     
-    func postPart(fileURLPath: URL,
+    private func resetBytesCounters(){
+        self.bytes = 0
+        self.totalBytes = nil
+        self.totalBytesSent = 0
+    }
+    
+    private func postPart(fileURLPath: URL,
                   signature: VzaarSignature,
                   part: Int?,
                   filename: String?,
                   success: @escaping (_ data: Data?, _ response: URLResponse?) -> Void,
                   failure: @escaping (_ error:Error?) -> Void){
     
-        if let key = signature.key , let policy = signature.policy, let sign = signature.signature, let success_action_status = signature.success_action_status, let acl = signature.acl, let accessKeyId = signature.access_key_id, let upload_hostname = signature.upload_hostname, let bucket = signature.bucket{
+        if let key = signature.key ,
+            let policy = signature.policy,
+            let x_amz_signature = signature.x_amz_signature,
+            let x_amz_date = signature.x_amz_date,
+            let x_amz_algorithm = signature.x_amz_algorithm,
+            let x_amz_credential = signature.x_amz_credential,
+            let success_action_status = signature.success_action_status,
+            let acl = signature.acl,
+            let upload_hostname = signature.upload_hostname,
+            let bucket = signature.bucket{
             
             let lastPathComponent = fileURLPath.lastPathComponent
-            
             let pathExtension = (lastPathComponent as NSString).pathExtension
             
             var name = "video_\(Int(Date().timeIntervalSince1970))"
@@ -122,14 +153,16 @@ class AWS: NSObject, URLSessionDelegate, URLSessionDataDelegate{
             }
             
             let videoDictionary = ["key":key.replacingOccurrences(of: "${filename}", with: "\(name)\(keySuffix)"),
-                                   "AWSAccessKeyId": accessKeyId,
                                    "acl": acl,
                                    "policy": policy,
                                    "success_action_status": success_action_status,
-                                   "signature": sign,
+                                   "X-Amz-Algorithm":x_amz_algorithm,
+                                   "X-Amz-Credential":x_amz_credential,
+                                   "X-Amz-Date":x_amz_date,
+                                   "X-Amz-Signature":x_amz_signature,
                                    "bucket": bucket,
                                    "x-amz-meta-uploader": "iOS-Swift"]
-            
+        
             do{
                 
                 var data = try Data(contentsOf: fileURLPath)
@@ -144,16 +177,11 @@ class AWS: NSObject, URLSessionDelegate, URLSessionDataDelegate{
                 
                 let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: OperationQueue.main)
                 
-                self.uploadTask = session.uploadTask(with: request as URLRequest, from: nil, completionHandler: { (data, response, error) in
-                    
-                    if error != nil {
-                        failure(error)
-                    }else{
-                        success(data, response)
-                    }
-                    
-                })
-                uploadTask.resume()
+                self.tryUploadTask(session: session, request: request, success: { (data, response) in
+                    success(data, response)
+                }) { (error) in
+                    failure(error)
+                }
                 
             }catch let error{
                 print("Data error : \(error)")
@@ -164,7 +192,36 @@ class AWS: NSObject, URLSessionDelegate, URLSessionDataDelegate{
         
     }
     
-    func postParts(fileURLPath: URL,
+    private func tryUploadTask(session: URLSession,
+                  request: NSMutableURLRequest,
+                  success: @escaping (_ data: Data?, _ response: URLResponse?) -> Void,
+                  failure: @escaping (_ error:Error?) -> Void){
+
+        self.uploadTask = session.uploadTask(with: request as URLRequest, from: nil, completionHandler: { (data, response, error) in
+            
+            if error != nil {
+                
+                if error.debugDescription.contains("The network connection was lost."){
+                    
+                    //retry upload and remove the bytes sent in that part if multipart from the counter
+                    self.bytes -= self.totalBytesSent
+                    self.tryUploadTask(session: session, request: request, success: { (data, response) in
+                        success(data, response)
+                    }, failure: { (error) in
+                        failure(error)
+                    })
+                }else{
+                    failure(error)
+                }
+            }else{
+                success(data, response)
+            }
+            
+        })
+        uploadTask.resume()
+    }
+    
+    private func postParts(fileURLPath: URL,
                    signature: VzaarSignature,
                    multiPartVideoSignatureParameters: VzaarMultiPartVideoSignatureParameters,
                    success: @escaping () -> Void,
@@ -183,7 +240,7 @@ class AWS: NSObject, URLSessionDelegate, URLSessionDataDelegate{
         
     }
     
-    func postPartRecursion(fileURLPath: URL,
+    private func postPartRecursion(fileURLPath: URL,
                            signature: VzaarSignature,
                            filename: String,
                            part: Int,
@@ -216,7 +273,7 @@ class AWS: NSObject, URLSessionDelegate, URLSessionDataDelegate{
         
     }
     
-    func partData(data: Data, part: Int, parts: Int, part_size_in_bytes: Int) -> Data{
+    private func partData(data: Data, part: Int, parts: Int, part_size_in_bytes: Int) -> Data{
         
         let count = data.count
         var dataParts = [Data]()
@@ -237,11 +294,13 @@ class AWS: NSObject, URLSessionDelegate, URLSessionDataDelegate{
             
         }
         
+        print("current part:\(part)")
+        
         return dataParts[part]
         
     }
     
-    func createBody(parameters: [String: String],
+    private func createBody(parameters: [String: String],
                     boundary: String,
                     data: Data,
                     mimeType: String,

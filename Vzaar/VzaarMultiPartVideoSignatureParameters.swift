@@ -33,7 +33,7 @@ public class VzaarMultiPartVideoSignatureParameters: VzaarRequestParameters {
         super.init()
         
         super.method = MethodType.post
-        super.urlSuffix = "signature/multipart"
+        super.urlSuffix = "signature/multipart/2"
     }
 
     public convenience init(filename: String, filesize: NSNumber/*objective-C*/){

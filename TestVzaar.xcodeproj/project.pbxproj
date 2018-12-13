@@ -20,6 +20,9 @@
 		28254FD11ED87FDC00683656 /* PlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FD01ED87FDC00683656 /* PlaylistsViewController.swift */; };
 		28254FD41ED8807D00683656 /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FD21ED8807D00683656 /* PlaylistTableViewCell.swift */; };
 		28254FD51ED8807D00683656 /* PlaylistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28254FD31ED8807D00683656 /* PlaylistTableViewCell.xib */; };
+		283E942121B697E900F02E6F /* CreateSubtitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283E942021B697E900F02E6F /* CreateSubtitleViewController.swift */; };
+		283E942A21B6D6F300F02E6F /* file.srt in Resources */ = {isa = PBXBuildFile; fileRef = 283E942921B6D6F200F02E6F /* file.srt */; };
+		286B000821B5484F00C34DBC /* PosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B000721B5484F00C34DBC /* PosterViewController.swift */; };
 		287676C21E64810400E675BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287676C11E64810400E675BE /* AppDelegate.swift */; };
 		287676C41E64810400E675BE /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287676C31E64810400E675BE /* VideosViewController.swift */; };
 		287676C71E64810400E675BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 287676C51E64810400E675BE /* Main.storyboard */; };
@@ -30,6 +33,7 @@
 		2882AD2E1ED589B60088F7E4 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2882AD2C1ED589B60088F7E4 /* VideoTableViewCell.swift */; };
 		2882AD2F1ED589B60088F7E4 /* VideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2882AD2D1ED589B60088F7E4 /* VideoTableViewCell.xib */; };
 		2882AD341ED5CF9A0088F7E4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2882AD331ED5CF990088F7E4 /* LoadingView.swift */; };
+		28995CD921B58DDB0057EAD6 /* SubtitlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28995CD821B58DDB0057EAD6 /* SubtitlesViewController.swift */; };
 		28C2B4641E6978B400226606 /* Vzaar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C2B4611E6977CC00226606 /* Vzaar.framework */; };
 		28C2B4651E6978B400226606 /* Vzaar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 28C2B4611E6977CC00226606 /* Vzaar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		28CCE4761E78459800798834 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 28CCE4751E78459800798834 /* Podfile */; };
@@ -89,6 +93,9 @@
 		28254FD01ED87FDC00683656 /* PlaylistsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistsViewController.swift; sourceTree = "<group>"; };
 		28254FD21ED8807D00683656 /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		28254FD31ED8807D00683656 /* PlaylistTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistTableViewCell.xib; sourceTree = "<group>"; };
+		283E942021B697E900F02E6F /* CreateSubtitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSubtitleViewController.swift; sourceTree = "<group>"; };
+		283E942921B6D6F200F02E6F /* file.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = file.srt; sourceTree = "<group>"; };
+		286B000721B5484F00C34DBC /* PosterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterViewController.swift; sourceTree = "<group>"; };
 		287676BE1E64810400E675BE /* TestVzaar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestVzaar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		287676C11E64810400E675BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		287676C31E64810400E675BE /* VideosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +108,7 @@
 		2882AD2C1ED589B60088F7E4 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		2882AD2D1ED589B60088F7E4 /* VideoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoTableViewCell.xib; sourceTree = "<group>"; };
 		2882AD331ED5CF990088F7E4 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		28995CD821B58DDB0057EAD6 /* SubtitlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitlesViewController.swift; sourceTree = "<group>"; };
 		28C2B4521E6977CC00226606 /* Vzaar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Vzaar.xcodeproj; sourceTree = "<group>"; };
 		28CCE4751E78459800798834 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3CC36D2BAC1FD3C9ED57D320 /* Pods_TestVzaar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestVzaar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +165,7 @@
 		287676B51E64810400E675BE = {
 			isa = PBXGroup;
 			children = (
+				283E942921B6D6F200F02E6F /* file.srt */,
 				28CCE4751E78459800798834 /* Podfile */,
 				28C2B4521E6977CC00226606 /* Vzaar.xcodeproj */,
 				287676C01E64810400E675BE /* TestVzaar */,
@@ -199,6 +208,9 @@
 				28254FC11ED8637100683656 /* EncodingPresetsViewController.swift */,
 				28254FD01ED87FDC00683656 /* PlaylistsViewController.swift */,
 				287E42721EDD64AE0007765F /* AddPlaylistViewController.swift */,
+				286B000721B5484F00C34DBC /* PosterViewController.swift */,
+				28995CD821B58DDB0057EAD6 /* SubtitlesViewController.swift */,
+				283E942021B697E900F02E6F /* CreateSubtitleViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -258,7 +270,7 @@
 				TargetAttributes = {
 					287676BD1E64810400E675BE = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 46QQZDC6KN;
+						DevelopmentTeam = CWGMHV7Z76;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -316,6 +328,7 @@
 				287676CC1E64810400E675BE /* Assets.xcassets in Resources */,
 				2882AD2F1ED589B60088F7E4 /* VideoTableViewCell.xib in Resources */,
 				28254FC61ED8643700683656 /* EncodingPresetTableViewCell.xib in Resources */,
+				283E942A21B6D6F300F02E6F /* file.srt in Resources */,
 				287676C71E64810400E675BE /* Main.storyboard in Resources */,
 				28CCE4761E78459800798834 /* Podfile in Resources */,
 			);
@@ -376,9 +389,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				283E942121B697E900F02E6F /* CreateSubtitleViewController.swift in Sources */,
 				28254FC21ED8637100683656 /* EncodingPresetsViewController.swift in Sources */,
+				286B000821B5484F00C34DBC /* PosterViewController.swift in Sources */,
 				28254FB71ED84F3000683656 /* IngestRecipesViewController.swift in Sources */,
 				287676C41E64810400E675BE /* VideosViewController.swift in Sources */,
+				28995CD921B58DDB0057EAD6 /* SubtitlesViewController.swift in Sources */,
 				28254FBB1ED851E400683656 /* IngestRecipeTableViewCell.swift in Sources */,
 				287676CA1E64810400E675BE /* TestVzaar.xcdatamodeld in Sources */,
 				287E42731EDD64AE0007765F /* AddPlaylistViewController.swift in Sources */,
@@ -525,7 +541,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 46QQZDC6KN;
+				DEVELOPMENT_TEAM = CWGMHV7Z76;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vzaar",
@@ -549,7 +565,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 46QQZDC6KN;
+				DEVELOPMENT_TEAM = CWGMHV7Z76;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vzaar",
