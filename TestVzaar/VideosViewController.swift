@@ -36,7 +36,7 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
         self.navigationItem.rightBarButtonItems = [selectVideobutton, refreshVideosButton]
         
         
-        Vzaar.sharedInstance().config = VzaarConfig(clientId: "YOUR_CLIENT_ID", authToken: "YOUR_AUTH_TOKEN")
+        Vzaar.sharedInstance().config = VzaarConfig(clientId: "YOUR-CLIENT-ID", authToken: "YOUR-AUTH-TOKEN")
         getVideos()
         
     }
