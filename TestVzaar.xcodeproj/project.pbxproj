@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		281BD0B021C29D6F00D95FE0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 281BD0AE21C29D6F00D95FE0 /* README.md */; };
 		28254F9E1ED72E5E00683656 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254F9D1ED72E5E00683656 /* CategoriesViewController.swift */; };
 		28254FA51ED7322E00683656 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28254FA31ED7322E00683656 /* CategoryTableViewCell.swift */; };
 		28254FA61ED7322E00683656 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28254FA41ED7322E00683656 /* CategoryTableViewCell.xib */; };
@@ -81,7 +80,6 @@
 
 /* Begin PBXFileReference section */
 		1999E91FDA8711AE55FC957E /* Pods-TestVzaar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestVzaar.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestVzaar/Pods-TestVzaar.release.xcconfig"; sourceTree = "<group>"; };
-		281BD0AE21C29D6F00D95FE0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		28254F9D1ED72E5E00683656 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		28254FA31ED7322E00683656 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		28254FA41ED7322E00683656 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
@@ -169,7 +167,6 @@
 			children = (
 				283E942921B6D6F200F02E6F /* file.srt */,
 				28CCE4751E78459800798834 /* Podfile */,
-				281BD0AE21C29D6F00D95FE0 /* README.md */,
 				28C2B4521E6977CC00226606 /* Vzaar.xcodeproj */,
 				287676C01E64810400E675BE /* TestVzaar */,
 				287676BF1E64810400E675BE /* Products */,
@@ -333,7 +330,6 @@
 				28254FC61ED8643700683656 /* EncodingPresetTableViewCell.xib in Resources */,
 				283E942A21B6D6F300F02E6F /* file.srt in Resources */,
 				287676C71E64810400E675BE /* Main.storyboard in Resources */,
-				281BD0B021C29D6F00D95FE0 /* README.md in Resources */,
 				28CCE4761E78459800798834 /* Podfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
