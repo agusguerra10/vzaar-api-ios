@@ -17,21 +17,21 @@ public class VzaarCreateIngestRecipeParameters: VzaarRequestParameters {
     //Recipe description.
     public var ingestRecipeDescription: String?
     //Flag this recipe as my default recipe. You can only have one default recipe.
-    public var defaut: Bool?
+    public var defaut: NSNumber?/* Objective-c compatible */
     //Perform multipass encoding (this will slow down your video processing but yield better quality results).
-    public var multipass: Bool?
+    public var multipass: NSNumber?/* Objective-c compatible */
     //Generate an animated gif thumbnail.
-    public var generate_animated_thumb: Bool?
+    public var generate_animated_thumb: NSNumber?/* Objective-c compatible */
     //Generate sprites (used for scrubbing thumbnails in the vzaar player).
-    public var generate_sprite: Bool?
+    public var generate_sprite: NSNumber?/* Objective-c compatible */
     //Burn your watermark into the transcoded video (requires additional watermark setup).
-    public var use_watermark: Bool?
+    public var use_watermark: NSNumber?/* Objective-c compatible */
     //Send your video to your associated YouTube account (requires YouTube syndication access and additional setup).
-    public var send_to_youtube: Bool?
+    public var send_to_youtube: NSNumber?/* Objective-c compatible */
     //Send email notification after video processing
-    public var notify_by_email: Bool?
+    public var notify_by_email: NSNumber?/* Objective-c compatible */
     //Send http pingback after video processing.
-    public var notify_by_pingback: Bool?
+    public var notify_by_pingback: NSNumber?/* Objective-c compatible */
     
     override init() {
         super.init()

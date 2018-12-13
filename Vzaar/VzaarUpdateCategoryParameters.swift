@@ -17,7 +17,7 @@ public class VzaarUpdateCategoryParameters: VzaarRequestParameters{
     //Move the category underneath an existing parent node
     public var parent_id: NSNumber?/* Objective-c compatible */
     //Move the category to the top level. Can not be used in combination with parent_id
-    public var move_to_root: Bool?
+    public var move_to_root: NSNumber?/* Objective-c compatible */
     
     override init() {
         super.init()

@@ -19,7 +19,7 @@ public class VzaarUpdatePlaylistParameters: VzaarRequestParameters {
     //Sort order for the playlist videos
     public var sort_order: String?
     //If the playlist is private, it cannot be viewed by others on the vzaar website
-    public var privacy: Bool?
+    public var privacy: NSNumber?/* Objective-c compatible */
     //Width and height for the playlist, must be in the format 780x340
     public var dimensions: String?
     //The maximum number of videos in the playlist.
@@ -27,9 +27,9 @@ public class VzaarUpdatePlaylistParameters: VzaarRequestParameters {
     //Which side the playlist controls show. Must be one of top, right, bottom, left
     public var position: String?
     //Should the first video in the playlist autoplay
-    public var autoplay: Bool?
+    public var autoplay: NSNumber?/* Objective-c compatible */
     //Should all the videos autoplay after each finishes
-    public var continuous_play: Bool?
+    public var continuous_play: NSNumber?/* Objective-c compatible */
     
     override init() {
         super.init()

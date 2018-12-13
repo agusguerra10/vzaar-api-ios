@@ -17,7 +17,7 @@ public class VzaarUpdateVideoParameters: VzaarRequestParameters{
     //Video description.
     public var videoDescription: String?
     //Private videos cannot be publicly viewed on vzaar.com
-    public var privacy: Bool?
+    public var privacy: NSNumber?/* Objective-c compatible */
     //URL for SEO purposes
     public var seo_url: String?
     //List of category id values to associate with this video.

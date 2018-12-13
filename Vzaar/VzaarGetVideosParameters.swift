@@ -23,7 +23,7 @@ public class VzaarGetVideosParameters: VzaarRequestParameters {
     //Category for filtered results.
     public var category_id: NSNumber?/* Objective-c compatible */
     //Filter videos on whether they are categorised or not.
-    public var categorised: Bool?
+    public var categorised: NSNumber?/* Objective-c compatible */
     //Video state for filtered results. Acceptable values are: processing, ready, failed
     public var state: VzaarGetVideosParametersState?
     
