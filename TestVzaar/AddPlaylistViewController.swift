@@ -49,7 +49,7 @@ class AddPlaylistViewController: UIViewController , UITextFieldDelegate, UITable
                 let window: UIWindow = (UIApplication.shared.delegate?.window!)!
                 window.addSubview(self.loadingView)
                 
-                let createPlaylistParameters = VzaarCreatePlaylistParameters(title: getPlaylistTitle(), category_id: Int32(category_id))
+                let createPlaylistParameters = VzaarCreatePlaylistParameters(title: getPlaylistTitle(), category_id: NSNumber(value: category_id))
                 createPlaylistParameters.max_vids = 0
                 
                 Vzaar.sharedInstance().createPlaylist(vzaarCreatePlaylistParameters: createPlaylistParameters, success: { (vzaarPlaylist) in

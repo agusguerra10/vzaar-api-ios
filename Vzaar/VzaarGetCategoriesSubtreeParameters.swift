@@ -11,20 +11,20 @@ import Foundation
 public class VzaarGetCategoriesSubtreeParameters: VzaarRequestParameters {
     
     //Category id - REQUIRED
-    public var id: Int32?
+    public var id: NSNumber?/* Objective-c compatible */
     
     //Page number for paginated results.
-    public var page: Int32?
+    public var page: NSNumber?/* Objective-c compatible */
     //Number of results per paginated page result.
-    public var per_page: Int32?
+    public var per_page: NSNumber?/* Objective-c compatible */
     //Number of hierarchy levels to include. This is one-based so a value of 2 would return your root categories and only their immediate child categories
-    public var levels: Int32?
+    public var levels: NSNumber?/* Objective-c compatible */
     
     override init(){
         super.init()
     }
     
-    public convenience init(id: Int32){
+    public convenience init(id: NSNumber){
         self.init()
         
         self.id = id

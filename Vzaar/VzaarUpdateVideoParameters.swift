@@ -11,7 +11,7 @@ import Foundation
 public class VzaarUpdateVideoParameters: VzaarRequestParameters{
     
     //Video id - REQUIRED
-    public var id: Int32?
+    public var id: NSNumber?/* Objective-c compatible */
     //Video title. If not provided this will default to your source filename.
     public var title: String?
     //Video description.
@@ -27,7 +27,7 @@ public class VzaarUpdateVideoParameters: VzaarRequestParameters{
         super.init()
     }
     
-    public convenience init(id: Int32) {
+    public convenience init(id: NSNumber) {
         self.init()
         
         self.id = id

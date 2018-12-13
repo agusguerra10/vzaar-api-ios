@@ -13,7 +13,7 @@ public class VzaarCreateIngestRecipeParameters: VzaarRequestParameters {
     //Name for the recipe - REQUIRED
     public var name: String?
     //List of encoding preset id values to associate with this recipe - REQUIRED
-    public var encoding_preset_ids: [Int32]?
+    public var encoding_preset_ids: [NSNumber]?/* Objective-c compatible */
     //Recipe description.
     public var ingestRecipeDescription: String?
     //Flag this recipe as my default recipe. You can only have one default recipe.
@@ -37,7 +37,7 @@ public class VzaarCreateIngestRecipeParameters: VzaarRequestParameters {
         super.init()
     }
     
-    public convenience init(name: String, encoding_preset_ids: [Int32]){
+    public convenience init(name: String, encoding_preset_ids: [NSNumber]){
         self.init()
         
         self.name = name

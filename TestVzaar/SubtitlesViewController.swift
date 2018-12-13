@@ -13,7 +13,7 @@ class SubtitlesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var loadingView: LoadingView!
-    var videoId: Int32!
+    var videoId: NSNumber!
     
     var subtitles:[VzaarSubtitle] = [VzaarSubtitle]()
     
@@ -126,7 +126,7 @@ extension SubtitlesViewController: UITableViewDelegate, UITableViewDataSource{
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         alertController.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: { (_) in
             
-            let params = VzaarDeleteSubtitlesParameters(id: self.videoId, subtitle: Int32(self.subtitles[indexPath.row].id!))
+            let params = VzaarDeleteSubtitlesParameters(id: self.videoId, subtitle: NSNumber(value: self.subtitles[indexPath.row].id!))
             
             Vzaar.sharedInstance().deleteSubtitle(vzaarDeleteSubtitlesParameters: params, success: {
                 DispatchQueue.main.async {

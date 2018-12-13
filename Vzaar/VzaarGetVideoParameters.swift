@@ -11,13 +11,13 @@ import Foundation
 public class VzaarGetVideoParameters: VzaarRequestParameters {
     
     //Video id - REQUIRED
-    public var id: Int32?
+    public var id: NSNumber?/* Objective-c compatible */
     
     override init(){
         super.init()
     }
     
-    public convenience init(id: Int32){
+    public convenience init(id: NSNumber){
         self.init()
         
         self.id = id

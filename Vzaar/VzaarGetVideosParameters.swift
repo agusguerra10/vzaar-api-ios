@@ -17,11 +17,11 @@ public class VzaarGetVideosParameters: VzaarRequestParameters {
     //Specify sort order. Acceptable values are: asc, desc.
     public var order: String?
     //Page number for paginated results.
-    public var page: Int32?
+    public var page: NSNumber?/* Objective-c compatible */
     //Number of results per paginated page result.
-    public var per_page: Int32?
+    public var per_page: NSNumber?/* Objective-c compatible */
     //Category for filtered results.
-    public var category_id: Int32?
+    public var category_id: NSNumber?/* Objective-c compatible */
     //Filter videos on whether they are categorised or not.
     public var categorised: Bool?
     //Video state for filtered results. Acceptable values are: processing, ready, failed

@@ -11,15 +11,15 @@ import UIKit
 public class VzaarDeleteSubtitlesParameters: VzaarRequestParameters {
     
     //Video id - REQUIRED
-    public var id: Int32?
+    public var id: NSNumber?/* Objective-c compatible */
     //Subtitle id - REQUIRED
-    public var subtitle: Int32?
+    public var subtitle: NSNumber?/* Objective-c compatible */
     
     override init() {
         super.init()
     }
     
-    public convenience init(id: Int32, subtitle: Int32) {
+    public convenience init(id: NSNumber, subtitle: NSNumber) {
         self.init()
         
         self.id = id

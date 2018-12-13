@@ -15,7 +15,7 @@ public class VzaarCreateLinkUploadParameters: VzaarRequestParameters{
     //REQUIRED (HARDCODED) uploader description used for metadata, analytics and support
     private var uploader: String = "ios-sdk-1.0.1"
     //Specify if you do not want to use your default Ingest Recipe.
-    public var ingest_recipe_id: Int32?
+    public var ingest_recipe_id: NSNumber?/* Objective-c compatible */
     //Video title. If not provided this will default to your source filename.
     public var title: String?
     //Video description.

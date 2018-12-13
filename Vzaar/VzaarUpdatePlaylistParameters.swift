@@ -11,7 +11,7 @@ import UIKit
 public class VzaarUpdatePlaylistParameters: VzaarRequestParameters {
     
     //Playlist id - REQUIRED
-    public var id: Int32?
+    public var id: NSNumber?/* Objective-c compatible */
     //Playlist title
     public var title: String?
     //Sort field for the playlist videos. Must be one of title or created_at
@@ -23,7 +23,7 @@ public class VzaarUpdatePlaylistParameters: VzaarRequestParameters {
     //Width and height for the playlist, must be in the format 780x340
     public var dimensions: String?
     //The maximum number of videos in the playlist.
-    public var max_vids: Int32?
+    public var max_vids: NSNumber?/* Objective-c compatible */
     //Which side the playlist controls show. Must be one of top, right, bottom, left
     public var position: String?
     //Should the first video in the playlist autoplay
@@ -35,7 +35,7 @@ public class VzaarUpdatePlaylistParameters: VzaarRequestParameters {
         super.init()
     }
     
-    public convenience init(id: Int32){
+    public convenience init(id: NSNumber){
         self.init()
         
         self.id = id

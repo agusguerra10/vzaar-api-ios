@@ -259,7 +259,7 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
     
     internal func deleteVideo(videoId: Int) {
         
-        let deleteVideoParameters = VzaarDeleteVideoParameters(id: Int32(videoId))
+        let deleteVideoParameters = VzaarDeleteVideoParameters(id: NSNumber(value: videoId))
         
         Vzaar.sharedInstance().deleteVideo(vzaarDeleteVideoParameters: deleteVideoParameters, success: { 
             
@@ -303,7 +303,7 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
         }
         alertController.addAction(UIAlertAction(title: "Update", style: UIAlertActionStyle.default, handler: { (_) in
             
-            let updateVideoParameters = VzaarUpdateVideoParameters(id: Int32(videoId))
+            let updateVideoParameters = VzaarUpdateVideoParameters(id: NSNumber(value: videoId))
             if let text = alertController.textFields?.first?.text{
                 updateVideoParameters.title = text
             }
@@ -417,7 +417,7 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
         if let destination = segue.destination as? PosterViewController, let video = sender as? VzaarVideo{
             destination.video = video
         }else if let destination = segue.destination as? SubtitlesViewController, let video = sender as? VzaarVideo{
-            destination.videoId = Int32(video.id!)
+            destination.videoId = NSNumber(value: video.id!)
         }
         
     }

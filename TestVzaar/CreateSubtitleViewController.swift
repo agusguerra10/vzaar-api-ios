@@ -15,7 +15,7 @@ class CreateSubtitleViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     
-    var videoId: Int32!
+    var videoId: NSNumber!
     var loadingView: LoadingView!
     var subtitle: VzaarSubtitle?
     
@@ -75,7 +75,7 @@ class CreateSubtitleViewController: UIViewController {
         let window: UIWindow = (UIApplication.shared.delegate?.window!)!
         window.addSubview(self.loadingView)
         
-        let params = VzaarUpdateSubtitleParameters(id: videoId, subtitle: Int32(subtitle.id!))
+        let params = VzaarUpdateSubtitleParameters(id: videoId, subtitle: NSNumber(value: subtitle.id!))
         params.code = codeTextField.text!
         if let text = titleTextField.text, text != ""{
             params.title = text

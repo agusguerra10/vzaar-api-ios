@@ -73,7 +73,7 @@ class PlaylistsViewController: UIViewController , UITableViewDataSource, Playlis
     
     internal func deletePlaylist(playlistId: Int) {
         
-        let vzaarDeleteParameters = VzaarDeletePlaylistParameters(id: Int32(playlistId))
+        let vzaarDeleteParameters = VzaarDeletePlaylistParameters(id: NSNumber(value: playlistId))
         
         Vzaar.sharedInstance().deletePlaylist(vzaarDeletePlaylistParameters: vzaarDeleteParameters, success: { 
             
@@ -118,7 +118,7 @@ class PlaylistsViewController: UIViewController , UITableViewDataSource, Playlis
         }
         alertController.addAction(UIAlertAction(title: "Update", style: UIAlertActionStyle.default, handler: { (_) in
             
-            let updatePlaylistParameters = VzaarUpdatePlaylistParameters(id: Int32(playlistId))
+            let updatePlaylistParameters = VzaarUpdatePlaylistParameters(id: NSNumber(value: playlistId))
             if let text = alertController.textFields?.first?.text{
                 updatePlaylistParameters.title = text
             }

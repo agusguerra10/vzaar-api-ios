@@ -13,7 +13,7 @@ public class VzaarCreatePlaylistParameters: VzaarRequestParameters {
     //Playlist title - REQUIRED
     public var title: String?
     //Category id  - REQUIRED
-    public var category_id: Int32?
+    public var category_id: NSNumber?/* Objective-c compatible */
     //Sort field for the playlist videos. Must be one of title or created_at
     public var sort_by: String?
     //Sort order for the playlist videos
@@ -23,7 +23,7 @@ public class VzaarCreatePlaylistParameters: VzaarRequestParameters {
     //Width and height for the playlist, must be in the format 780x340
     public var dimensions: String?
     //The maximum number of videos in the playlist.
-    public var max_vids: Int32?
+    public var max_vids: NSNumber?/* Objective-c compatible */
     //Which side the playlist controls show. Must be one of top, right, bottom, left
     public var position: String?
     //Should the first video in the playlist autoplay
@@ -35,7 +35,7 @@ public class VzaarCreatePlaylistParameters: VzaarRequestParameters {
         super.init()
     }
     
-    public convenience init(title: String, category_id: Int32){
+    public convenience init(title: String, category_id: NSNumber){
         self.init()
         
         self.title = title

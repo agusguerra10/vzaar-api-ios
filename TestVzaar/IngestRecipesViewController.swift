@@ -57,9 +57,9 @@ class IngestRecipesViewController: UIViewController , UITableViewDataSource, UIT
                 window.addSubview(self.loadingView)
                 
                 let idsStringArray = arrayOfIds.components(separatedBy: ",")
-                let idsIntArray: [Int32] = idsStringArray.map({ (id) -> Int32 in
-                    if let id = Int32(id){
-                        return id
+                let idsIntArray: [NSNumber] = idsStringArray.map({ (id) -> NSNumber in
+                    if let id = Int(id){
+                        return NSNumber(value: id)
                     }
                     return -1
                 })
@@ -72,7 +72,7 @@ class IngestRecipesViewController: UIViewController , UITableViewDataSource, UIT
         
     }
     
-    func addIngestRecipe(name: String, ids: [Int32]){
+    func addIngestRecipe(name: String, ids: [NSNumber]){
         
         let ingestRecipeParameters = VzaarCreateIngestRecipeParameters(name: name, encoding_preset_ids: ids)
         
@@ -135,7 +135,7 @@ class IngestRecipesViewController: UIViewController , UITableViewDataSource, UIT
     
     internal func deleteIngestRecipe(ingestRecipeId: Int) {
         
-        let deleteIngestRecipeParameters = VzaarDeleteIngestRecipeParameters(id: Int32(ingestRecipeId))
+        let deleteIngestRecipeParameters = VzaarDeleteIngestRecipeParameters(id: NSNumber(value: ingestRecipeId))
         
         Vzaar.sharedInstance().deleteIngestRecipe(vzaarDeleteIngestRecipeParameters: deleteIngestRecipeParameters, success: { 
             
@@ -180,7 +180,7 @@ class IngestRecipesViewController: UIViewController , UITableViewDataSource, UIT
         }
         alertController.addAction(UIAlertAction(title: "Update", style: UIAlertActionStyle.default, handler: { (_) in
             
-            let updateIngestRecipeParameters = VzaarUpdateIngestRecipeParameters(id: Int32(ingestRecipeId))
+            let updateIngestRecipeParameters = VzaarUpdateIngestRecipeParameters(id: NSNumber(value: ingestRecipeId))
             if let text = alertController.textFields?.first?.text{
                 updateIngestRecipeParameters.name = text
             }

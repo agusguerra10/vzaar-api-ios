@@ -11,7 +11,7 @@ import UIKit
 public class VzaarPostSubtitlesParameters: VzaarRequestParameters {
 
     //Video id - REQUIRED
-    public var id: Int32?
+    public var id: NSNumber?/* Objective-c compatible */
     //Language code
     public var code: String?
     //Name for subtitle file
@@ -25,7 +25,7 @@ public class VzaarPostSubtitlesParameters: VzaarRequestParameters {
         super.init()
     }
     
-    public convenience init(id: Int32) {
+    public convenience init(id: NSNumber) {
         self.init()
         
         self.id = id

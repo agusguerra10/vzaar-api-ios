@@ -11,7 +11,7 @@ import Foundation
 public class VzaarUploadImageFrameParameters: VzaarRequestParameters {
     
     //Video id - REQUIRED
-    public var id: Int32?
+    public var id: NSNumber?/* Objective-c compatible */
     //Seconds into video to generate poster frame from
     public var image: UIImage?
     
@@ -19,7 +19,7 @@ public class VzaarUploadImageFrameParameters: VzaarRequestParameters {
         super.init()
     }
     
-    public convenience init(id: Int32, image: UIImage) {
+    public convenience init(id: NSNumber, image: UIImage) {
         self.init()
         
         self.id = id

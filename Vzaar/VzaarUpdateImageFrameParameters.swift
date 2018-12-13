@@ -11,7 +11,7 @@ import Foundation
 public class VzaarUpdateImageFrameParameters: VzaarRequestParameters {
 
     //Video id - REQUIRED
-    public var id: Int32?
+    public var id: NSNumber?/* Objective-c compatible */
     //Seconds into video to generate poster frame from
     public var time: Float?
     
@@ -19,7 +19,7 @@ public class VzaarUpdateImageFrameParameters: VzaarRequestParameters {
         super.init()
     }
     
-    public convenience init(id: Int32) {
+    public convenience init(id: NSNumber) {
         self.init()
         
         self.id = id

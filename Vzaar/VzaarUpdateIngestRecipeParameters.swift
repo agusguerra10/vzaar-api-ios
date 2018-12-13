@@ -11,11 +11,11 @@ import Foundation
 public class VzaarUpdateIngestRecipeParameters: VzaarRequestParameters {
     
     //Ingest Recipe id - REQUIRED
-    public var id: Int32?
+    public var id: NSNumber?/* Objective-c compatible */
     //Name for the recipe
     public var name: String?
     //List of encoding preset id values to associate with this recipe
-    public var encoding_preset_ids: [Int32]?
+    public var encoding_preset_ids: [NSNumber]?/* Objective-c compatible */
     //Recipe description.
     public var ingestRecipeDescription: String?
     //Flag this recipe as my default recipe. You can only have one default recipe.
@@ -39,7 +39,7 @@ public class VzaarUpdateIngestRecipeParameters: VzaarRequestParameters {
         super.init()
     }
     
-    public convenience init(id: Int32){
+    public convenience init(id: NSNumber){
         self.init()
         
         self.id = id

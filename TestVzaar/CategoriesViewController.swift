@@ -133,7 +133,7 @@ class CategoriesViewController: UIViewController , UITableViewDataSource, UIText
         }
         alertController.addAction(UIAlertAction(title: "Update", style: UIAlertActionStyle.default, handler: { (_) in
             
-            let updateCategoryParameters = VzaarUpdateCategoryParameters(id: Int32(categoryId))
+            let updateCategoryParameters = VzaarUpdateCategoryParameters(id: NSNumber(value: categoryId))
             if let text = alertController.textFields?.first?.text{
                 updateCategoryParameters.name = text
             }
@@ -172,7 +172,7 @@ class CategoriesViewController: UIViewController , UITableViewDataSource, UIText
     
     internal func deleteCategory(categoryId: Int) {
         
-        let deleteCategoryParameters = VzaarDeleteCategoryParameters(id: Int32(categoryId))
+        let deleteCategoryParameters = VzaarDeleteCategoryParameters(id: NSNumber(value: categoryId))
         
         Vzaar.sharedInstance().deleteCategory(vzaarDeleteCategoryParameters: deleteCategoryParameters, success: { 
             

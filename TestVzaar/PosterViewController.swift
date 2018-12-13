@@ -50,7 +50,7 @@ class PosterViewController: UIViewController , UIImagePickerControllerDelegate, 
         
         if let image = imageView.image{
             
-            let params = VzaarUploadImageFrameParameters(id: Int32(self.video.id!), image: image)
+            let params = VzaarUploadImageFrameParameters(id: NSNumber(value: self.video.id!), image: image)
             
             self.loadingView = LoadingView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
             let window: UIWindow = (UIApplication.shared.delegate?.window!)!
@@ -101,7 +101,7 @@ class PosterViewController: UIViewController , UIImagePickerControllerDelegate, 
             guard let textField = alertController.textFields?.first else { return }
             guard let time = Float(textField.text!) else { return }
             
-            let params = VzaarUpdateImageFrameParameters(id: Int32(self.video.id!))
+            let params = VzaarUpdateImageFrameParameters(id: NSNumber(value: self.video.id!))
             params.time = time
             
             self.loadingView = LoadingView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
