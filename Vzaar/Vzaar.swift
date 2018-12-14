@@ -41,6 +41,20 @@ public class Vzaar: NSObject, AWSUploadProgressDelegate{
         }
     }
     
+    public func suspendUploadTask(){
+        AWS.sharedInstance().suspendUploadTask()
+        if sessionDataTask != nil {
+            sessionDataTask.suspend()
+        }
+    }
+    
+    public func resumeUploadTask(){
+        AWS.sharedInstance().resumeUploadTask()
+        if sessionDataTask != nil {
+            sessionDataTask.resume()
+        }
+    }
+    
     /**
      *  Function that gets one Video from vzaar
      *
@@ -104,6 +118,7 @@ public class Vzaar: NSObject, AWSUploadProgressDelegate{
             }else {
                 noResponse(NSError(domain: "com.Vzaar.data.error", code: 405, userInfo: ["Data":"There was a problem with data"]) as Error)
             }
+            
         }, failure: { (vzaarError) in
             failure(vzaarError)
         }) { (error) in
@@ -1030,6 +1045,230 @@ public class Vzaar: NSObject, AWSUploadProgressDelegate{
         }) { (error) in
             noResponse(error)
         }
+    }
+    
+    /**
+     *  Function that sets image frame
+     *
+     *  @param vzaarUpdateImageFrameParameters   The query parameters for the setting of image frame
+     *
+     */
+    public func updateImageFrame(vzaarUpdateImageFrameParameters: VzaarUpdateImageFrameParameters,
+                                 success: @escaping (_ vzaarVideo:VzaarVideo) -> Void,
+                                 failure: @escaping (_ error:VzaarError?) -> Void,
+                                 noResponse: @escaping (_ error:Error?) -> Void){
+        
+        guard let config = self.config else {
+            noResponse(NSError(domain: "com.Vzaar.RequestParameters.error", code: 405, userInfo: ["Request Parameters":"You need to set Vzaar Config Parameters"]) as Error)
+            return
+        }
+        
+        let request = vzaarUpdateImageFrameParameters.createRequest(withConfig: config)
+        
+        performSessionDataTask(withRequest: request, success: { (data, response) in
+            
+            if let data = data{
+                VzaarParser.getVideo(withData: data, success: { (video) in
+                    success(video)
+                }, failure: { (message) in
+                    noResponse(NSError(domain: "com.Vzaar.json.error", code: 405, userInfo: ["Invalid Json": message]) as Error)
+                })
+            }else{
+                noResponse(NSError(domain: "com.Vzaar.data.error", code: 405, userInfo: ["Data":"There was a problem with data"]) as Error)
+            }
+            
+        }, failure: { (vzaarError) in
+            failure(vzaarError)
+        }) { (error) in
+            noResponse(error)
+        }
+        
+    }
+    
+    /**
+     *
+     *  Function that uploads the image frame
+     *
+     *  @param image The query parameters for the uploading of image frame
+     *
+     */
+    public func uploadImageFrame(vzaarUploadImageFrameParameters: VzaarUploadImageFrameParameters,
+                                 success: @escaping (_ vzaarVideo:VzaarVideo) -> Void,
+                                 failure: @escaping (_ error:VzaarError?) -> Void,
+                                 noResponse: @escaping (_ error:Error?) -> Void){
+        
+        guard let config = self.config else {
+            noResponse(NSError(domain: "com.Vzaar.RequestParameters.error", code: 405, userInfo: ["Request Parameters":"You need to set Vzaar Config Parameters"]) as Error)
+            return
+        }
+        
+        //let request = vzaarUploadImageFrameParameters.createRequest(withConfig: config)
+        let request = vzaarUploadImageFrameParameters.createImageRequest(withConfig: config)
+        
+        performSessionDataTask(withRequest: request, success: { (data, response) in
+            
+            if let data = data{
+                VzaarParser.getVideo(withData: data, success: { (video) in
+                    success(video)
+                }, failure: { (message) in
+                    noResponse(NSError(domain: "com.Vzaar.json.error", code: 405, userInfo: ["Invalid Json": message]) as Error)
+                })
+            }else{
+                noResponse(NSError(domain: "com.Vzaar.data.error", code: 405, userInfo: ["Data":"There was a problem with data"]) as Error)
+            }
+            
+        }, failure: { (vzaarError) in
+            failure(vzaarError)
+        }) { (error) in
+            noResponse(error)
+        }
+        
+    }
+    
+    /**
+     *
+     *  Function that get the list of subtitles
+     *
+     *  @param vzaarUploadImageFrameParameters
+     *
+     **/
+    public func getSubtitles(vzaarGetSubtitlesParameters: VzaarGetSubtitlesParameters,
+                             success: @escaping (_ vzaarSubtitles:[VzaarSubtitle]) -> Void,
+                             failure: @escaping (_ error:VzaarError?) -> Void,
+                             noResponse: @escaping (_ error:Error?) -> Void){
+        
+        guard let config = self.config else {
+            noResponse(NSError(domain: "com.Vzaar.RequestParameters.error", code: 405, userInfo: ["Request Parameters":"You need to set Vzaar Config Parameters"]) as Error)
+            return
+        }
+        
+        let request = vzaarGetSubtitlesParameters.createRequest(withConfig: config)
+        
+        performSessionDataTask(withRequest: request, success: { (data, response) in
+            
+            if let data = data{
+                VzaarParser.getSubtitles(withData: data, success: { (subtitles) in
+                    success(subtitles)
+                }, failure: { (message) in
+                    noResponse(NSError(domain: "com.Vzaar.json.error", code: 405, userInfo: ["Invalid Json": message]) as Error)
+                })
+            }else{
+                noResponse(NSError(domain: "com.Vzaar.data.error", code: 405, userInfo: ["Data":"There was a problem with data"]) as Error)
+            }
+            
+        }, failure: { (vzaarError) in
+            failure(vzaarError)
+        }) { (error) in
+            noResponse(error)
+        }
+        
+    }
+    
+    /**
+     *
+     *  Function to create subtitle
+     *
+     *  @params vzaarPostSubtitlesParameters
+     *
+     */
+    public func createSubtitle(vzaarPostSubtitlesParameters: VzaarPostSubtitlesParameters,
+                               success: @escaping (_ vzaarSubtitle:VzaarSubtitle) -> Void,
+                               failure: @escaping (_ error:VzaarError?) -> Void,
+                               noResponse: @escaping (_ error:Error?) -> Void){
+        
+        guard let config = self.config else {
+            noResponse(NSError(domain: "com.Vzaar.RequestParameters.error", code: 405, userInfo: ["Request Parameters":"You need to set Vzaar Config Parameters"]) as Error)
+            return
+        }
+        
+        let request = vzaarPostSubtitlesParameters.createRequest(withConfig: config)
+        
+        performSessionDataTask(withRequest: request, success: { (data, response) in
+            
+            if let data = data{
+                VzaarParser.getSubtitle(withData: data, success: { (subtitle) in
+                    success(subtitle)
+                }, failure: { (message) in
+                    noResponse(NSError(domain: "com.Vzaar.json.error", code: 405, userInfo: ["Invalid Json": message]) as Error)
+                })
+            }else{
+                noResponse(NSError(domain: "com.Vzaar.data.error", code: 405, userInfo: ["Data":"There was a problem with data"]) as Error)
+            }
+            
+        }, failure: { (vzaarError) in
+            failure(vzaarError)
+        }) { (error) in
+            noResponse(error)
+        }
+        
+    }
+    
+    /**
+     *
+     *  Function to update subtitle
+     *
+     *  @params vzaarUpdateSubtitleParameters
+     *
+     */
+    public func updateSubtitle(vzaarUpdateSubtitleParameters: VzaarUpdateSubtitleParameters,
+                               success: @escaping (_ vzaarSubtitle:VzaarSubtitle) -> Void,
+                               failure: @escaping (_ error:VzaarError?) -> Void,
+                               noResponse: @escaping (_ error:Error?) -> Void){
+        
+        guard let config = self.config else {
+            noResponse(NSError(domain: "com.Vzaar.RequestParameters.error", code: 405, userInfo: ["Request Parameters":"You need to set Vzaar Config Parameters"]) as Error)
+            return
+        }
+        
+        let request = vzaarUpdateSubtitleParameters.createRequest(withConfig: config)
+        
+        performSessionDataTask(withRequest: request, success: { (data, response) in
+            
+            if let data = data{
+                VzaarParser.getSubtitle(withData: data, success: { (subtitle) in
+                    success(subtitle)
+                }, failure: { (message) in
+                    noResponse(NSError(domain: "com.Vzaar.json.error", code: 405, userInfo: ["Invalid Json": message]) as Error)
+                })
+            }else{
+                noResponse(NSError(domain: "com.Vzaar.data.error", code: 405, userInfo: ["Data":"There was a problem with data"]) as Error)
+            }
+            
+        }, failure: { (vzaarError) in
+            failure(vzaarError)
+        }) { (error) in
+            noResponse(error)
+        }
+        
+    }
+    
+    /**
+     *
+     *  Function to delete subtitle
+     *
+     *  @params vzaarDeleteSubtitlesParameters
+     *
+     */
+    public func deleteSubtitle(vzaarDeleteSubtitlesParameters: VzaarDeleteSubtitlesParameters,
+                               success: @escaping () -> Void,
+                               failure: @escaping (_ error:VzaarError?) -> Void,
+                               noResponse: @escaping (_ error:Error?) -> Void){
+        
+        guard let config = self.config else {
+            noResponse(NSError(domain: "com.Vzaar.RequestParameters.error", code: 405, userInfo: ["Request Parameters":"You need to set Vzaar Config Parameters"]) as Error)
+            return
+        }
+        
+        let request = vzaarDeleteSubtitlesParameters.createRequest(withConfig: config)
+        
+        performSessionDataTask(withRequest: request, success: { (data, response) in
+            success()
+        }, failure: { (vzaarError) in
+            failure(vzaarError)
+        }) { (error) in
+            noResponse(error)
+        }
+        
     }
     
     func performSessionDataTask(withRequest request:NSMutableURLRequest,

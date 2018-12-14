@@ -11,6 +11,8 @@ import UIKit
 protocol VideoTableViewCellDelegate {
     func deleteVideo(videoId: Int)
     func updateVideo(videoId: Int, currentTitleText: String)
+    func addPosterButtonAction(videoId: Int)
+    func subtitlesButtonAction(videoId: Int)
 }
 
 class VideoTableViewCell: UITableViewCell {
@@ -20,6 +22,8 @@ class VideoTableViewCell: UITableViewCell {
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var deleteVideoButton: UIButton!
     @IBOutlet weak var updateVideoButton: UIButton!
+    @IBOutlet weak var addPosterButton: UIButton!
+    @IBOutlet weak var subtitlesButton: UIButton!
     
     var delegate: VideoTableViewCellDelegate?
     
@@ -69,6 +73,24 @@ class VideoTableViewCell: UITableViewCell {
     func updateAction(sender: UIButton){
         guard let videoId = videoId, let text = titleLabel.text else { return }
         delegate?.updateVideo(videoId: videoId, currentTitleText: text)
+    }
+    
+    func setPosterButton(){
+        addPosterButton.addTarget(self, action: #selector(addPosterAction), for: UIControlEvents.touchUpInside)
+    }
+    
+    func addPosterAction(sender: UIButton){
+        guard let videoId = videoId else { return }
+        delegate?.addPosterButtonAction(videoId: videoId)
+    }
+    
+    func setSubtitlesButton(){
+        subtitlesButton.addTarget(self, action: #selector(subtitlesAction), for: UIControlEvents.touchUpInside)
+    }
+    
+    func subtitlesAction(sender: UIButton){
+        guard let videoId = videoId else { return }
+        delegate?.subtitlesButtonAction(videoId: videoId)
     }
     
     override func awakeFromNib() {
