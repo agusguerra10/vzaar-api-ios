@@ -32,8 +32,8 @@ class SubtitlesViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        let createSubtitleButton = UIBarButtonItem(title: "Add", style: UIBarButtonItemStyle.plain, target: self, action: #selector(createSubtitleAction))
-        let refreshVideosButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(refreshVideosAction))
+        let createSubtitleButton = UIBarButtonItem(title: "Add", style: UIBarButtonItem.Style.plain, target: self, action: #selector(createSubtitleAction))
+        let refreshVideosButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh, target: self, action: #selector(refreshVideosAction))
         self.navigationItem.rightBarButtonItems = [createSubtitleButton, refreshVideosButton]
     }
     
@@ -62,11 +62,16 @@ class SubtitlesViewController: UIViewController {
             }
             
         }, failure: { (vzaarError) in
-            DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-            if let vzaarError = vzaarError{
-                if let errors = vzaarError.errors{
-                    print(errors)
-                    VZError.alert(viewController: self, errors: errors)
+            DispatchQueue.main.async {
+                if self.loadingView != nil {
+                    self.loadingView.removeFromSuperview()
+                }
+                
+                if let vzaarError = vzaarError {
+                    if let errors = vzaarError.errors {
+                        print(errors)
+                        VZError.alert(viewController: self, errors: errors)
+                    }
                 }
             }
         }) { (error) in
@@ -123,8 +128,8 @@ extension SubtitlesViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-        alertController.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: { (_) in
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        alertController.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { (_) in
             
             let params = VzaarDeleteSubtitlesParameters(id: self.videoId, subtitle: Int32(self.subtitles[indexPath.row].id!))
             
@@ -133,11 +138,16 @@ extension SubtitlesViewController: UITableViewDelegate, UITableViewDataSource{
                     self.getSubtitles()
                 }
             }, failure: { (vzaarError) in
-                DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-                if let vzaarError = vzaarError{
-                    if let errors = vzaarError.errors{
-                        print(errors)
-                        VZError.alert(viewController: self, errors: errors)
+                DispatchQueue.main.async {
+                    if self.loadingView != nil {
+                        self.loadingView.removeFromSuperview()
+                    }
+                    
+                    if let vzaarError = vzaarError {
+                        if let errors = vzaarError.errors {
+                            print(errors)
+                            VZError.alert(viewController: self, errors: errors)
+                        }
                     }
                 }
             }) { (error) in
@@ -148,12 +158,12 @@ extension SubtitlesViewController: UITableViewDelegate, UITableViewDataSource{
             }
             
         }))
-        alertController.addAction(UIAlertAction(title: "Update", style: UIAlertActionStyle.default, handler: { (_) in
+        alertController.addAction(UIAlertAction(title: "Update", style: UIAlertAction.Style.default, handler: { (_) in
             
             self.performSegue(withIdentifier: "createSubtitleSegue", sender: indexPath.row)
             
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
     

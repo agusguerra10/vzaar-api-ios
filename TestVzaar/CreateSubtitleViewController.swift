@@ -42,9 +42,9 @@ class CreateSubtitleViewController: UIViewController {
         
         if let subtitle = subtitle{
             codeTextField.text = subtitle.code ?? ""
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Update", style: UIBarButtonItemStyle.plain, target: self, action: #selector(updateSubtitleAction))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Update", style: UIBarButtonItem.Style.plain, target: self, action: #selector(updateSubtitleAction))
         }else{
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: UIBarButtonItemStyle.plain, target: self, action: #selector(createSubtitleAction))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: UIBarButtonItem.Style.plain, target: self, action: #selector(createSubtitleAction))
         }
         
         
@@ -96,11 +96,16 @@ class CreateSubtitleViewController: UIViewController {
             }
             
         }, failure: { (vzaarError) in
-            DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-            if let vzaarError = vzaarError{
-                if let errors = vzaarError.errors{
-                    print(errors)
-                    VZError.alert(viewController: self, errors: errors)
+            DispatchQueue.main.async {
+                if self.loadingView != nil {
+                    self.loadingView.removeFromSuperview()
+                }
+                
+                if let vzaarError = vzaarError {
+                    if let errors = vzaarError.errors {
+                        print(errors)
+                        VZError.alert(viewController: self, errors: errors)
+                    }
                 }
             }
         }) { (error) in

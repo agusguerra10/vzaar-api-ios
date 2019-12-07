@@ -32,7 +32,7 @@ public class VzaarUploadImageFrameParameters: VzaarRequestParameters {
         var params: [String: Any] = [String: Any]()
         
         if let image = image{
-            if let imageData = UIImageJPEGRepresentation(image, 1){
+            if let imageData = image.jpegData(compressionQuality: 1){
                 params["image"] = imageData
             }
         }

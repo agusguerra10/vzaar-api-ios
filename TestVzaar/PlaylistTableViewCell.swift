@@ -28,19 +28,19 @@ class PlaylistTableViewCell: UITableViewCell {
     }
     
     func setDeleteButton(){
-        deleteButton.addTarget(self, action: #selector(deleteAction), for: UIControlEvents.touchUpInside)
+        deleteButton.addTarget(self, action: #selector(deleteAction), for: UIControl.Event.touchUpInside)
     }
     
     func setUpdateButton(){
-        updateButton.addTarget(self, action: #selector(updateAction), for: UIControlEvents.touchUpInside)
+        updateButton.addTarget(self, action: #selector(updateAction), for: UIControl.Event.touchUpInside)
     }
     
-    func deleteAction(sender: UIButton){
+    @objc func deleteAction(sender: UIButton){
         guard let playlistId = playlistId else { return }
         delegate?.deletePlaylist(playlistId: playlistId)
     }
 
-    func updateAction(sender: UIButton){
+    @objc func updateAction(sender: UIButton){
         guard let playlistId = playlistId , let text = playlistLabel.text else { return }
         delegate?.updatePlaylist(playlistId: playlistId, currentTitleText: text)
     }

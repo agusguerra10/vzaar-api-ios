@@ -26,7 +26,7 @@ class AddPlaylistViewController: UIViewController , UITextFieldDelegate, UITable
         tableView.dataSource = self
         tableView.register(UINib(nibName: "CategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "categoryCell")
         
-        let createPlaylistButton = UIBarButtonItem(title: "Create", style: UIBarButtonItemStyle.plain, target: self, action: #selector(createPlaylistAction))
+        let createPlaylistButton = UIBarButtonItem(title: "Create", style: UIBarButtonItem.Style.plain, target: self, action: #selector(createPlaylistAction))
         self.navigationItem.rightBarButtonItem = createPlaylistButton
         
     }
@@ -37,7 +37,7 @@ class AddPlaylistViewController: UIViewController , UITextFieldDelegate, UITable
         getCategories()
     }
     
-    func createPlaylistAction(){
+    @objc func createPlaylistAction(){
         
         if let category_id = getSelectedCategoryId(){
             
@@ -60,11 +60,16 @@ class AddPlaylistViewController: UIViewController , UITextFieldDelegate, UITable
                     }
                     
                 }, failure: { (vzaarError) in
-                    DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-                    if let vzaarError = vzaarError{
-                        if let errors = vzaarError.errors{
-                            print(errors)
-                            VZError.alert(viewController: self, errors: errors)
+                    DispatchQueue.main.async {
+                        if self.loadingView != nil {
+                            self.loadingView.removeFromSuperview()
+                        }
+                        
+                        if let vzaarError = vzaarError {
+                            if let errors = vzaarError.errors {
+                                print(errors)
+                                VZError.alert(viewController: self, errors: errors)
+                            }
                         }
                     }
                 }, noResponse: { (error) in

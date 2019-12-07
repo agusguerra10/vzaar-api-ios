@@ -16,8 +16,8 @@ class VZError: NSObject{
         if let error = errors[0] as? NSDictionary{
             if let message = error["detail"] as? String, let title = error["message"] as? String{
                 
-                let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 viewController.present(alertController, animated: true, completion: nil)
                 
             }
@@ -27,8 +27,8 @@ class VZError: NSObject{
     
     static func alert(viewController: UIViewController, title: String, message: String){
         
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         viewController.present(alertController, animated: true, completion: nil)
         
     }

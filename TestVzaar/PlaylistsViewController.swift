@@ -23,18 +23,18 @@ class PlaylistsViewController: UIViewController , UITableViewDataSource, Playlis
         tableView.dataSource = self
         tableView.register(UINib(nibName: "PlaylistTableViewCell", bundle: nil), forCellReuseIdentifier: "playlistCell")
         
-        let addPlaylistbutton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addPlaylistAction))
-        let refreshPlaylissButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(refreshPlaylistsAction))
+        let addPlaylistbutton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addPlaylistAction))
+        let refreshPlaylissButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh, target: self, action: #selector(refreshPlaylistsAction))
         self.navigationItem.rightBarButtonItems = [addPlaylistbutton, refreshPlaylissButton]
         
         getPlaylists()
     }
     
-    func addPlaylistAction(){
+    @objc func addPlaylistAction(){
         self.performSegue(withIdentifier: "addPlaylistSegue", sender: nil)
     }
     
-    func refreshPlaylistsAction(){
+    @objc func refreshPlaylistsAction(){
         getPlaylists()
     }
     
@@ -83,7 +83,7 @@ class PlaylistsViewController: UIViewController , UITableViewDataSource, Playlis
                     if self.playlists[i].id == playlistId{
                         self.playlists.remove(at: i)
                         self.tableView.beginUpdates()
-                        self.tableView.deleteRows(at: [IndexPath(row: i, section: 0)], with: UITableViewRowAnimation.middle)
+                        self.tableView.deleteRows(at: [IndexPath(row: i, section: 0)], with: UITableView.RowAnimation.middle)
                         self.tableView.endUpdates()
                         return
                     }
@@ -91,11 +91,16 @@ class PlaylistsViewController: UIViewController , UITableViewDataSource, Playlis
             }
             
         }, failure: { (vzaarError) in
-            DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-            if let vzaarError = vzaarError{
-                if let errors = vzaarError.errors{
-                    print(errors)
-                    VZError.alert(viewController: self, errors: errors)
+            DispatchQueue.main.async {
+                if self.loadingView != nil {
+                    self.loadingView.removeFromSuperview()
+                }
+                
+                if let vzaarError = vzaarError {
+                    if let errors = vzaarError.errors {
+                        print(errors)
+                        VZError.alert(viewController: self, errors: errors)
+                    }
                 }
             }
         }) { (error) in
@@ -109,14 +114,14 @@ class PlaylistsViewController: UIViewController , UITableViewDataSource, Playlis
     
     internal func updatePlaylist(playlistId: Int, currentTitleText: String) {
         
-        let alertController = UIAlertController(title: "Update Playlist", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Update Playlist", message: nil, preferredStyle: UIAlertController.Style.alert)
         alertController.addTextField { (textField) in
             textField.autocapitalizationType = UITextAutocapitalizationType.words
             textField.textAlignment = NSTextAlignment.center
             textField.text = currentTitleText
             textField.placeholder = "Name"
         }
-        alertController.addAction(UIAlertAction(title: "Update", style: UIAlertActionStyle.default, handler: { (_) in
+        alertController.addAction(UIAlertAction(title: "Update", style: UIAlertAction.Style.default, handler: { (_) in
             
             let updatePlaylistParameters = VzaarUpdatePlaylistParameters(id: Int32(playlistId))
             if let text = alertController.textFields?.first?.text{
@@ -151,7 +156,7 @@ class PlaylistsViewController: UIViewController , UITableViewDataSource, Playlis
             })
             
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil))
         self.present(alertController, animated: true, completion: nil)
         
     }

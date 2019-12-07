@@ -31,8 +31,8 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
         tableView.dataSource = self
         tableView.register(UINib(nibName: "VideoTableViewCell", bundle: nil), forCellReuseIdentifier: "videoCell")
         
-        let selectVideobutton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(selectVideoToUploadAction))
-        let refreshVideosButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(refreshVideosAction))
+        let selectVideobutton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(selectVideoToUploadAction))
+        let refreshVideosButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh, target: self, action: #selector(refreshVideosAction))
         self.navigationItem.rightBarButtonItems = [selectVideobutton, refreshVideosButton]
         
         
@@ -51,19 +51,19 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
         getVideos(state: VzaarGetVideosParametersState.ready)
     }
     
-    func actionCancelUploadTask(){
+    @objc func actionCancelUploadTask(){
         
         Vzaar.sharedInstance().suspendUploadTask()
         if self.loadingView != nil{ self.loadingView.isHidden = true }
         print("--------SUSPENDED-----------")
         
-        let alertController = UIAlertController(title: "Suspended", message: "The video upload has been suspended. You can resume or cancel the video upload.", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "Resume", style: UIAlertActionStyle.default, handler: { (alertAction) in
+        let alertController = UIAlertController(title: "Suspended", message: "The video upload has been suspended. You can resume or cancel the video upload.", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Resume", style: UIAlertAction.Style.default, handler: { (alertAction) in
             print("--------RESUMED-----------")
             Vzaar.sharedInstance().resumeUploadTask()
             if self.loadingView != nil{ self.loadingView.isHidden = false }
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: { (alertAction) in
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: { (alertAction) in
             print("--------CANCELED-----------")
             Vzaar.sharedInstance().cancelUploadTask()
             if self.loadingView != nil{ self.loadingView.removeFromSuperview() }
@@ -99,11 +99,16 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
             
             
         }, failure: { (vzaarError) in
-            DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-            if let vzaarError = vzaarError{
-                if let errors = vzaarError.errors{
-                    print(errors)
-                    VZError.alert(viewController: self, errors: errors)
+            DispatchQueue.main.async {
+                if self.loadingView != nil {
+                    self.loadingView.removeFromSuperview()
+                }
+                
+                if let vzaarError = vzaarError{
+                    if let errors = vzaarError.errors{
+                        print(errors)
+                        VZError.alert(viewController: self, errors: errors)
+                    }
                 }
             }
         }) { (error) in
@@ -115,23 +120,23 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
         
     }
     
-    func refreshVideosAction(sender: UIButton){
+    @objc func refreshVideosAction(sender: UIButton){
         getVideos()
     }
     
-    func selectVideoToUploadAction(sender: UIButton){
+    @objc func selectVideoToUploadAction(sender: UIButton){
         
         let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePickerController.mediaTypes = [kUTTypeMovie as String]
         imagePickerController.delegate = self
         self.present(imagePickerController, animated: true, completion: nil)
         
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        if let videoMediaURL = info[UIImagePickerControllerMediaURL] as? URL{
+        if let videoMediaURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
             print(videoMediaURL)
             picker.dismiss(animated: true, completion: { 
                 self.prepareToUploadVideo(fileURLWithPath: videoMediaURL)
@@ -142,21 +147,21 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
     
     func prepareToUploadVideo(fileURLWithPath: URL){
         
-        let alert = UIAlertController(title: "Set a name for the video", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Set a name for the video", message: nil, preferredStyle: UIAlertController.Style.alert)
         alert.addTextField(configurationHandler: {(textField: UITextField!) in
             textField.delegate = self
             textField.textAlignment = NSTextAlignment.center
             textField.autocapitalizationType = UITextAutocapitalizationType.sentences
             textField.placeholder = "Name"
         })
-        alert.addAction(UIAlertAction(title: "Upload", style: UIAlertActionStyle.default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: "Upload", style: UIAlertAction.Style.default, handler: { (_) in
             if let text = alert.textFields?.first?.text{
                 
                 if self.loadingView != nil { self.loadingView.removeFromSuperview() }
                 self.loadingView = LoadingView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
                 self.loadingView.percentageLabel.isHidden = false
                 self.loadingView.cancelButton.isHidden = false
-                self.loadingView.cancelButton.addTarget(self, action: #selector(self.actionCancelUploadTask), for: UIControlEvents.touchUpInside)
+                self.loadingView.cancelButton.addTarget(self, action: #selector(self.actionCancelUploadTask), for: UIControl.Event.touchUpInside)
                 self.loadingView.percentageLabel.text = "0%"
                 let window: UIWindow = (UIApplication.shared.delegate?.window!)!
                 window.addSubview(self.loadingView)
@@ -164,7 +169,7 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
                 self.uploadVideo(name:  text,fileURLWithPath: fileURLWithPath)
             }
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
     }
@@ -208,11 +213,16 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
                                                 if self.loadingView != nil { self.loadingView.removeFromSuperview() }
                                             }
         }, failure: { (vzaarError) in
-            DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-            if let vzaarError = vzaarError{
-                if let errors = vzaarError.errors{
-                    print(errors)
-                    VZError.alert(viewController: self, errors: errors)
+            DispatchQueue.main.async {
+                if self.loadingView != nil {
+                    self.loadingView.removeFromSuperview()
+                }
+                
+                if let vzaarError = vzaarError{
+                    if let errors = vzaarError.errors{
+                        print(errors)
+                        VZError.alert(viewController: self, errors: errors)
+                    }
                 }
             }
         }) { (error) in
@@ -241,11 +251,16 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
                                             
                                             
         }, failure: { (vzaarError) in
-            DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-            if let vzaarError = vzaarError{
-                if let errors = vzaarError.errors{
-                    print(errors)
-                    VZError.alert(viewController: self, errors: errors)
+            DispatchQueue.main.async {
+                if self.loadingView != nil {
+                    self.loadingView.removeFromSuperview()
+                }
+                
+                if let vzaarError = vzaarError{
+                    if let errors = vzaarError.errors{
+                        print(errors)
+                        VZError.alert(viewController: self, errors: errors)
+                    }
                 }
             }
         }) { (error) in
@@ -269,7 +284,7 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
                     if self.videosReady[i].id == videoId{
                         self.videosReady.remove(at: i)
                         self.tableView.beginUpdates()
-                        self.tableView.deleteRows(at: [IndexPath(row: i, section: 1)], with: UITableViewRowAnimation.middle)
+                        self.tableView.deleteRows(at: [IndexPath(row: i, section: 1)], with: UITableView.RowAnimation.middle)
                         self.tableView.endUpdates()
                         return
                     }
@@ -277,11 +292,16 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
             }
             
         }, failure: { (vzaarError) in
-            DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-            if let vzaarError = vzaarError{
-                if let errors = vzaarError.errors{
-                    print(errors)
-                    VZError.alert(viewController: self, errors: errors)
+            DispatchQueue.main.async {
+                if self.loadingView != nil {
+                    self.loadingView.removeFromSuperview()
+                }
+             
+                if let vzaarError = vzaarError {
+                    if let errors = vzaarError.errors {
+                        print(errors)
+                        VZError.alert(viewController: self, errors: errors)
+                    }
                 }
             }
         }) { (error) in
@@ -294,14 +314,14 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
     
     internal func updateVideo(videoId: Int, currentTitleText: String) {
         
-        let alertController = UIAlertController(title: "Update Video", message: "Title", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Update Video", message: "Title", preferredStyle: UIAlertController.Style.alert)
         alertController.addTextField { (textField) in
             textField.autocapitalizationType = UITextAutocapitalizationType.words
             textField.textAlignment = NSTextAlignment.center
             textField.text = currentTitleText
             textField.placeholder = "Name"
         }
-        alertController.addAction(UIAlertAction(title: "Update", style: UIAlertActionStyle.default, handler: { (_) in
+        alertController.addAction(UIAlertAction(title: "Update", style: UIAlertAction.Style.default, handler: { (_) in
             
             let updateVideoParameters = VzaarUpdateVideoParameters(id: Int32(videoId))
             if let text = alertController.textFields?.first?.text{
@@ -322,11 +342,16 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
                 }
                 
             }, failure: { (vzaarError) in
-                DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-                if let vzaarError = vzaarError{
-                    if let errors = vzaarError.errors{
-                        print(errors)
-                        VZError.alert(viewController: self, errors: errors)
+                DispatchQueue.main.async {
+                    if self.loadingView != nil {
+                        self.loadingView.removeFromSuperview()
+                    }
+                 
+                    if let vzaarError = vzaarError {
+                        if let errors = vzaarError.errors {
+                            print(errors)
+                            VZError.alert(viewController: self, errors: errors)
+                        }
                     }
                 }
             }) { (error) in
@@ -337,7 +362,7 @@ class VideosViewController: UIViewController , VzaarUploadProgressDelegate, UITa
             }
             
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil))
         self.present(alertController, animated: true, completion: nil)
         
     }

@@ -23,20 +23,20 @@ class IngestRecipesViewController: UIViewController , UITableViewDataSource, UIT
         tableView.dataSource = self
         tableView.register(UINib(nibName: "IngestRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "ingestRecipeCell")
         
-        let addCategorybutton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addIngestRecipeAction))
-        let refreshCategoriesButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(refreshIngestRecipesAction))
+        let addCategorybutton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addIngestRecipeAction))
+        let refreshCategoriesButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh, target: self, action: #selector(refreshIngestRecipesAction))
         self.navigationItem.rightBarButtonItems = [addCategorybutton, refreshCategoriesButton]
         
         getIngestRecipes()
     }
     
-    func refreshIngestRecipesAction(){
+    @objc func refreshIngestRecipesAction(){
         getIngestRecipes()
     }
     
-    func addIngestRecipeAction(){
+    @objc func addIngestRecipeAction(){
         
-        let alert = UIAlertController(title: "Set a name and encoding preset id array for the Ingest Recipe", message: "Available Encoding Presets are:         Do not encode-2                             ULD-3                              LD-4                         SDLower-5             SDHigher-6             HD720p-7              HD1080p-8", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Set a name and encoding preset id array for the Ingest Recipe", message: "Available Encoding Presets are:         Do not encode-2                             ULD-3                              LD-4                         SDLower-5             SDHigher-6             HD720p-7              HD1080p-8", preferredStyle: UIAlertController.Style.alert)
         alert.addTextField(configurationHandler: {(textField: UITextField!) in
             textField.delegate = self
             textField.textAlignment = NSTextAlignment.center
@@ -49,7 +49,7 @@ class IngestRecipesViewController: UIViewController , UITableViewDataSource, UIT
             textField.autocapitalizationType = UITextAutocapitalizationType.sentences
             textField.placeholder = "e.g.(3,4,7)"
         })
-        alert.addAction(UIAlertAction(title: "Add", style: UIAlertActionStyle.default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: "Add", style: UIAlertAction.Style.default, handler: { (_) in
             if let text = alert.textFields?.first?.text, let arrayOfIds = alert.textFields?[1].text{
                 
                 if self.loadingView != nil { self.loadingView.removeFromSuperview() }
@@ -67,7 +67,7 @@ class IngestRecipesViewController: UIViewController , UITableViewDataSource, UIT
                 self.addIngestRecipe(name: text, ids: idsIntArray)
             }
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
     }
@@ -83,11 +83,16 @@ class IngestRecipesViewController: UIViewController , UITableViewDataSource, UIT
             }
             
         }, failure: { (vzaarError) in
-            DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-            if let vzaarError = vzaarError{
-                if let errors = vzaarError.errors{
-                    print(errors)
-                    VZError.alert(viewController: self, errors: errors)
+            DispatchQueue.main.async {
+                if self.loadingView != nil {
+                    self.loadingView.removeFromSuperview()
+                }
+                
+                if let vzaarError = vzaarError {
+                    if let errors = vzaarError.errors {
+                        print(errors)
+                        VZError.alert(viewController: self, errors: errors)
+                    }
                 }
             }
         }) { (error) in
@@ -117,11 +122,16 @@ class IngestRecipesViewController: UIViewController , UITableViewDataSource, UIT
             }
             
         }, failure: { (vzaarError) in
-            DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-            if let vzaarError = vzaarError{
-                if let errors = vzaarError.errors{
-                    print(errors)
-                    VZError.alert(viewController: self, errors: errors)
+            DispatchQueue.main.async {
+                if self.loadingView != nil {
+                    self.loadingView.removeFromSuperview()
+                }
+             
+                if let vzaarError = vzaarError {
+                    if let errors = vzaarError.errors {
+                        print(errors)
+                        VZError.alert(viewController: self, errors: errors)
+                    }
                 }
             }
         }) { (error) in
@@ -145,7 +155,7 @@ class IngestRecipesViewController: UIViewController , UITableViewDataSource, UIT
                     if self.ingestRecipes[i].id == ingestRecipeId{
                         self.ingestRecipes.remove(at: i)
                         self.tableView.beginUpdates()
-                        self.tableView.deleteRows(at: [IndexPath(row: i, section: 0)], with: UITableViewRowAnimation.middle)
+                        self.tableView.deleteRows(at: [IndexPath(row: i, section: 0)], with: UITableView.RowAnimation.middle)
                         self.tableView.endUpdates()
                         return
                     }
@@ -153,11 +163,16 @@ class IngestRecipesViewController: UIViewController , UITableViewDataSource, UIT
             }
             
         }, failure: { (vzaarError) in
-            DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-            if let vzaarError = vzaarError{
-                if let errors = vzaarError.errors{
-                    print(errors)
-                    VZError.alert(viewController: self, errors: errors)
+            DispatchQueue.main.async {
+                if self.loadingView != nil {
+                    self.loadingView.removeFromSuperview()
+                }
+                
+                if let vzaarError = vzaarError {
+                    if let errors = vzaarError.errors {
+                        print(errors)
+                        VZError.alert(viewController: self, errors: errors)
+                    }
                 }
             }
         }) { (error) in
@@ -171,14 +186,14 @@ class IngestRecipesViewController: UIViewController , UITableViewDataSource, UIT
     
     internal func updateIngestRecipe(ingestRecipeId: Int, currentIngestRecipeText: String) {
         
-        let alertController = UIAlertController(title: "Update Ingest Recipe", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Update Ingest Recipe", message: nil, preferredStyle: UIAlertController.Style.alert)
         alertController.addTextField { (textField) in
             textField.autocapitalizationType = UITextAutocapitalizationType.words
             textField.textAlignment = NSTextAlignment.center
             textField.text = currentIngestRecipeText
             textField.placeholder = "Name"
         }
-        alertController.addAction(UIAlertAction(title: "Update", style: UIAlertActionStyle.default, handler: { (_) in
+        alertController.addAction(UIAlertAction(title: "Update", style: UIAlertAction.Style.default, handler: { (_) in
             
             let updateIngestRecipeParameters = VzaarUpdateIngestRecipeParameters(id: Int32(ingestRecipeId))
             if let text = alertController.textFields?.first?.text{
@@ -213,7 +228,7 @@ class IngestRecipesViewController: UIViewController , UITableViewDataSource, UIT
             })
             
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
     

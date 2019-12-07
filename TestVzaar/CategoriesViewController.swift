@@ -23,23 +23,23 @@ class CategoriesViewController: UIViewController , UITableViewDataSource, UIText
         tableView.dataSource = self
         tableView.register(UINib(nibName: "CategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "categoryCell")
         
-        let addCategorybutton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addCategoryAction))
-        let refreshCategoriesButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(refreshCategoriesAction))
+        let addCategorybutton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addCategoryAction))
+        let refreshCategoriesButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh, target: self, action: #selector(refreshCategoriesAction))
         self.navigationItem.rightBarButtonItems = [addCategorybutton, refreshCategoriesButton]
         
         getCategories()
     }
     
-    func addCategoryAction(){
+    @objc func addCategoryAction(){
         
-        let alert = UIAlertController(title: "Set a name for the Category", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Set a name for the Category", message: nil, preferredStyle: UIAlertController.Style.alert)
         alert.addTextField(configurationHandler: {(textField: UITextField!) in
             textField.delegate = self
             textField.textAlignment = NSTextAlignment.center
             textField.autocapitalizationType = UITextAutocapitalizationType.sentences
             textField.placeholder = "Name"
         })
-        alert.addAction(UIAlertAction(title: "Add", style: UIAlertActionStyle.default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: "Add", style: UIAlertAction.Style.default, handler: { (_) in
             if let text = alert.textFields?.first?.text{
                 
                 if self.loadingView != nil { self.loadingView.removeFromSuperview() }
@@ -49,7 +49,7 @@ class CategoriesViewController: UIViewController , UITableViewDataSource, UIText
                 self.addCategory(name: text)
             }
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
     }
@@ -67,11 +67,16 @@ class CategoriesViewController: UIViewController , UITableViewDataSource, UIText
             }
             
         }, failure: { (vzaarError) in
-            DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-            if let vzaarError = vzaarError{
-                if let errors = vzaarError.errors{
-                    print(errors)
-                    VZError.alert(viewController: self, errors: errors)
+            DispatchQueue.main.async {
+                if self.loadingView != nil {
+                    self.loadingView.removeFromSuperview()
+                }
+             
+                if let vzaarError = vzaarError {
+                    if let errors = vzaarError.errors {
+                        print(errors)
+                        VZError.alert(viewController: self, errors: errors)
+                    }
                 }
             }
         }) { (error) in
@@ -83,7 +88,7 @@ class CategoriesViewController: UIViewController , UITableViewDataSource, UIText
     
     }
     
-    func refreshCategoriesAction(){
+    @objc func refreshCategoriesAction(){
         getCategories()
     }
     
@@ -106,11 +111,16 @@ class CategoriesViewController: UIViewController , UITableViewDataSource, UIText
             }
             
         }, failure: { (vzaarError) in
-            DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-            if let vzaarError = vzaarError{
-                if let errors = vzaarError.errors{
-                    print(errors)
-                    VZError.alert(viewController: self, errors: errors)
+            DispatchQueue.main.async {
+                if self.loadingView != nil {
+                    self.loadingView.removeFromSuperview()
+                }
+                
+                if let vzaarError = vzaarError {
+                    if let errors = vzaarError.errors {
+                        print(errors)
+                        VZError.alert(viewController: self, errors: errors)
+                    }
                 }
             }
         }) { (error) in
@@ -124,14 +134,14 @@ class CategoriesViewController: UIViewController , UITableViewDataSource, UIText
     
     internal func updateCategory(categoryId: Int, currentTitleText: String) {
         
-        let alertController = UIAlertController(title: "Update Category", message: "Title", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Update Category", message: "Title", preferredStyle: UIAlertController.Style.alert)
         alertController.addTextField { (textField) in
             textField.autocapitalizationType = UITextAutocapitalizationType.words
             textField.textAlignment = NSTextAlignment.center
             textField.text = currentTitleText
             textField.placeholder = "Name"
         }
-        alertController.addAction(UIAlertAction(title: "Update", style: UIAlertActionStyle.default, handler: { (_) in
+        alertController.addAction(UIAlertAction(title: "Update", style: UIAlertAction.Style.default, handler: { (_) in
             
             let updateCategoryParameters = VzaarUpdateCategoryParameters(id: Int32(categoryId))
             if let text = alertController.textFields?.first?.text{
@@ -166,7 +176,7 @@ class CategoriesViewController: UIViewController , UITableViewDataSource, UIText
             })
             
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -182,7 +192,7 @@ class CategoriesViewController: UIViewController , UITableViewDataSource, UIText
                     if self.categories[i].id == categoryId{
                         self.categories.remove(at: i)
                         self.tableView.beginUpdates()
-                        self.tableView.deleteRows(at: [IndexPath(row: i, section: 0)], with: UITableViewRowAnimation.middle)
+                        self.tableView.deleteRows(at: [IndexPath(row: i, section: 0)], with: UITableView.RowAnimation.middle)
                         self.tableView.endUpdates()
                         return
                     }
@@ -190,11 +200,16 @@ class CategoriesViewController: UIViewController , UITableViewDataSource, UIText
             }
             
         }, failure: { (vzaarError) in
-            DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-            if let vzaarError = vzaarError{
-                if let errors = vzaarError.errors{
-                    print(errors)
-                    VZError.alert(viewController: self, errors: errors)
+            DispatchQueue.main.async {
+                if self.loadingView != nil {
+                    self.loadingView.removeFromSuperview()
+                }
+                
+                if let vzaarError = vzaarError {
+                    if let errors = vzaarError.errors {
+                        print(errors)
+                        VZError.alert(viewController: self, errors: errors)
+                    }
                 }
             }
         }, noResponse: { (error) in

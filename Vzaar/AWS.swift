@@ -287,7 +287,7 @@ class AWS: NSObject, URLSessionDelegate, URLSessionDataDelegate{
             let start = i * part_size_in_bytes
             var end = i * part_size_in_bytes + part_size_in_bytes
             if i == (parts-1) { end = count }
-            let range = Range(start..<end)
+            let range = start..<end
             print(range)
             let subdata = data.subdata(in: range)
             dataParts.append(subdata)

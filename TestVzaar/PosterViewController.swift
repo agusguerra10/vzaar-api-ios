@@ -30,8 +30,8 @@ class PosterViewController: UIViewController , UIImagePickerControllerDelegate, 
         
         self.navigationItem.title = "Image Frame"
         
-        updateImageFrameButton.addTarget(self, action: #selector(updateImageAction), for: UIControlEvents.touchUpInside)
-        addTimeImageFrameButton.addTarget(self, action: #selector(addTimeImageAction), for: UIControlEvents.touchUpInside)
+        updateImageFrameButton.addTarget(self, action: #selector(updateImageAction), for: UIControl.Event.touchUpInside)
+        addTimeImageFrameButton.addTarget(self, action: #selector(addTimeImageAction), for: UIControl.Event.touchUpInside)
         
         let imageGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         imageView.isUserInteractionEnabled = true
@@ -41,12 +41,12 @@ class PosterViewController: UIViewController , UIImagePickerControllerDelegate, 
         
     }
     
-    func imageTapped(){
+    @objc func imageTapped(){
         print("image Tapped")
         self.present(imagePickerController, animated: true, completion: nil)
     }
     
-    func updateImageAction(sender: UIButton){
+    @objc func updateImageAction(sender: UIButton){
         
         if let image = imageView.image{
             
@@ -59,16 +59,21 @@ class PosterViewController: UIViewController , UIImagePickerControllerDelegate, 
             Vzaar.sharedInstance().uploadImageFrame(vzaarUploadImageFrameParameters: params, success: { (vzaarVideo) in
                 DispatchQueue.main.async {
                     if self.loadingView != nil { self.loadingView.removeFromSuperview() }
-                    print(vzaarVideo.asset_url)
-                    print(vzaarVideo.poster_url)
+//                    print(vzaarVideo.asset_url)
+//                    print(vzaarVideo.poster_url)
                     self.navigationController?.popViewController(animated: true)
                 }
             }, failure: { (vzaarError) in
-                DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-                if let vzaarError = vzaarError{
-                    if let errors = vzaarError.errors{
-                        print(errors)
-                        VZError.alert(viewController: self, errors: errors)
+                DispatchQueue.main.async {
+                    if self.loadingView != nil {
+                        self.loadingView.removeFromSuperview()
+                    }
+                    
+                    if let vzaarError = vzaarError {
+                        if let errors = vzaarError.errors {
+                            print(errors)
+                            VZError.alert(viewController: self, errors: errors)
+                        }
                     }
                 }
             }) { (error) in
@@ -79,24 +84,24 @@ class PosterViewController: UIViewController , UIImagePickerControllerDelegate, 
             }
             
         }else{
-            let alert = UIAlertController(title: "No Image", message: "You need to set image", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: "No Image", message: "You need to set image", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         
         
     }
     
-    func addTimeImageAction(sender: UIButton){
+    @objc func addTimeImageAction(sender: UIButton){
         
-        let alertController = UIAlertController(title: "Set Poster Frame", message: "Input time in seconds", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Set Poster Frame", message: "Input time in seconds", preferredStyle: UIAlertController.Style.alert)
         alertController.addTextField { (textField) in
             textField.autocapitalizationType = UITextAutocapitalizationType.words
             textField.textAlignment = NSTextAlignment.center
             textField.keyboardType = .decimalPad
             textField.placeholder = "Time"
         }
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (_) in
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (_) in
             
             guard let textField = alertController.textFields?.first else { return }
             guard let time = Float(textField.text!) else { return }
@@ -111,15 +116,20 @@ class PosterViewController: UIViewController , UIImagePickerControllerDelegate, 
             Vzaar.sharedInstance().updateImageFrame(vzaarUpdateImageFrameParameters: params, success: { (vzaarVideo) in
                 DispatchQueue.main.async {
                     if self.loadingView != nil { self.loadingView.removeFromSuperview() }
-                    print(vzaarVideo.poster_url)
+//                    print(vzaarVideo.poster_url)
                     self.navigationController?.popViewController(animated: true)
                 }
             }, failure: { (vzaarError) in
-                DispatchQueue.main.async { if self.loadingView != nil { self.loadingView.removeFromSuperview() } }
-                if let vzaarError = vzaarError{
-                    if let errors = vzaarError.errors{
-                        print(errors)
-                        VZError.alert(viewController: self, errors: errors)
+                DispatchQueue.main.async {
+                    if self.loadingView != nil {
+                        self.loadingView.removeFromSuperview()
+                    }
+                        
+                    if let vzaarError = vzaarError {
+                        if let errors = vzaarError.errors {
+                            print(errors)
+                            VZError.alert(viewController: self, errors: errors)
+                        }
                     }
                 }
             }) { (error) in
@@ -130,16 +140,16 @@ class PosterViewController: UIViewController , UIImagePickerControllerDelegate, 
             }
             
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         self.present(alertController, animated: true, completion: nil)
         
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         print(info)
         
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
             
             self.imageView.image = image
             

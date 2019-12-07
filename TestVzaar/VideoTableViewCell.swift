@@ -58,37 +58,37 @@ class VideoTableViewCell: UITableViewCell {
     }
     
     func setDeleteButton(){
-        deleteVideoButton.addTarget(self, action: #selector(deleteAction), for: UIControlEvents.touchUpInside)
+        deleteVideoButton.addTarget(self, action: #selector(deleteAction), for: UIControl.Event.touchUpInside)
     }
     
-    func deleteAction(sender: UIButton){
+    @objc func deleteAction(sender: UIButton){
         guard let videoId = videoId else { return }
         delegate?.deleteVideo(videoId: videoId)
     }
     
     func setUpdateButton(){
-        updateVideoButton.addTarget(self, action: #selector(updateAction), for: UIControlEvents.touchUpInside)
+        updateVideoButton.addTarget(self, action: #selector(updateAction), for: UIControl.Event.touchUpInside)
     }
     
-    func updateAction(sender: UIButton){
+    @objc func updateAction(sender: UIButton){
         guard let videoId = videoId, let text = titleLabel.text else { return }
         delegate?.updateVideo(videoId: videoId, currentTitleText: text)
     }
     
     func setPosterButton(){
-        addPosterButton.addTarget(self, action: #selector(addPosterAction), for: UIControlEvents.touchUpInside)
+        addPosterButton.addTarget(self, action: #selector(addPosterAction), for: UIControl.Event.touchUpInside)
     }
     
-    func addPosterAction(sender: UIButton){
+    @objc func addPosterAction(sender: UIButton){
         guard let videoId = videoId else { return }
         delegate?.addPosterButtonAction(videoId: videoId)
     }
     
     func setSubtitlesButton(){
-        subtitlesButton.addTarget(self, action: #selector(subtitlesAction), for: UIControlEvents.touchUpInside)
+        subtitlesButton.addTarget(self, action: #selector(subtitlesAction), for: UIControl.Event.touchUpInside)
     }
     
-    func subtitlesAction(sender: UIButton){
+    @objc func subtitlesAction(sender: UIButton){
         guard let videoId = videoId else { return }
         delegate?.subtitlesButtonAction(videoId: videoId)
     }

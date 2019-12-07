@@ -32,7 +32,7 @@ class LoadingView: UIView {
         addSubview(whiteView)
         
         loadingIndicatorView = UIActivityIndicatorView(frame: CGRect(x: frame.size.width/2-20, y: frame.size.height/2-20, width: 40, height: 40))
-        loadingIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        loadingIndicatorView.style = UIActivityIndicatorView.Style.whiteLarge
         loadingIndicatorView.color = UIColor.black
         loadingIndicatorView.startAnimating()
         addSubview(loadingIndicatorView)
@@ -44,8 +44,8 @@ class LoadingView: UIView {
         addSubview(percentageLabel)
         
         cancelButton = UIButton(frame: CGRect(x: frame.size.width/2-50, y: frame.size.height/2+20, width: 100, height: 30))
-        cancelButton.setTitle("Cancel", for: UIControlState.normal)
-        cancelButton.setTitleColor(UIColor.black, for: UIControlState.normal)
+        cancelButton.setTitle("Cancel", for: UIControl.State.normal)
+        cancelButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
         cancelButton.isHidden = true
         addSubview(cancelButton)
         

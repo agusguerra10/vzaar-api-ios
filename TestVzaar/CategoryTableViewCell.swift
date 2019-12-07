@@ -30,20 +30,20 @@ class CategoryTableViewCell: UITableViewCell {
     
     func setUpdateButton(){
         updateButton.isHidden = false
-        updateButton.addTarget(self, action: #selector(updateAction), for: UIControlEvents.touchUpInside)
+        updateButton.addTarget(self, action: #selector(updateAction), for: UIControl.Event.touchUpInside)
     }
     
     func setDeleteButton(){
         deleteButton.isHidden = false
-        deleteButton.addTarget(self, action: #selector(deleteAction), for: UIControlEvents.touchUpInside)
+        deleteButton.addTarget(self, action: #selector(deleteAction), for: UIControl.Event.touchUpInside)
     }
     
-    func updateAction(sender: UIButton){
+    @objc func updateAction(sender: UIButton){
         guard let categoryId = categoryId, let text = categoryLabel.text else { return }
         delegate?.updateCategory(categoryId: categoryId, currentTitleText: text)
     }
     
-    func deleteAction(sender: UIButton){
+    @objc func deleteAction(sender: UIButton){
         guard let categoryId = categoryId else { return }
         delegate?.deleteCategory(categoryId: categoryId)
     }
